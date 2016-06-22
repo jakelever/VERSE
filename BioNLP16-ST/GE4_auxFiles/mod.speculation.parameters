@@ -1,0 +1,1 @@
+C:0.571850379871 ; classifier:SVM ; doFeatureSelection:True ; featureChoice:ngramsOfDependencyPath,ngrams_entityWindowBoth_1,ngrams_entityWindowLeft_9,selectedlemmas,skipgrams_9 ; featureSelectPerc:38 ; kernel:linear ; sentenceRange:0 ; shrinking:False ; svmAutoClassWeights:True ; tfidf:True
