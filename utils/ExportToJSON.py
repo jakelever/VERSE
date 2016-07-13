@@ -13,18 +13,18 @@ from SentenceModel import *
 
 # It's the main bit. Yay!
 if __name__ == "__main__":
-	parser = argparse.ArgumentParser(description='VERSE entity extractor')
+	parser = argparse.ArgumentParser(description='Export VERSE data to JSON format')
 
-	parser.add_argument('--inPickle', required=True, type=str, help='')
-	parser.add_argument('--origDir', required=True, type=str, help='')
-	parser.add_argument('--outDir', required=True, type=str, help='')
-	parser.add_argument('--triggerTypes', required=True, type=str)
+	parser.add_argument('--inFile', required=True, type=str, help='File to be exported')
+	parser.add_argument('--origDir', required=True, type=str, help='Original directory with text data')
+	parser.add_argument('--outDir', required=True, type=str, help='Output directory')
+	parser.add_argument('--triggerTypes', required=True, type=str, help='Comma-delimited list of types of entities that should be event triggers')
 
 	args = parser.parse_args()
 
 	triggerTypes = set(args.triggerTypes.split(','))
 
-	with open(args.inPickle, 'r') as f:
+	with open(args.inFile, 'r') as f:
 		pickleData = pickle.load(f)
 
 	outDir = args.outDir
@@ -54,7 +54,7 @@ if __name__ == "__main__":
 		topE = 0
 		topT = -1
 		for sentence in sentenceData:
-			entityIDs = sentence.eventTriggerLocs.keys() + sentence.argumentTriggerLocs.keys()
+			entityIDs = sentence.predictedEntityLocs.keys() + sentence.knownEntityLocs.keys()
 			for eID in entityIDs:
 				if eID[0] == 'T':
 					num = int(eID[1:])
@@ -62,8 +62,8 @@ if __name__ == "__main__":
 
 		for sentence in sentenceData:
 			# {u'obj': u'Protein', u'span': {u'begin': 3871, u'end': 3874}, u'id': u'T52'}
-			predictedEntities = [ (id,sentence.eventTriggerLocs[id],sentence.eventTriggerTypes[id]) for id in sentence.eventTriggerLocs ]
-			knownEntities = [ (id,sentence.argumentTriggerLocs[id],sentence.argumentTriggerTypes[id]) for id in sentence.argumentTriggerLocs ]
+			predictedEntities = [ (id,sentence.predictedEntityLocs[id],sentence.predictedEntityTypes[id]) for id in sentence.predictedEntityLocs ]
+			knownEntities = [ (id,sentence.knownEntityLocs[id],sentence.knownEntityTypes[id]) for id in sentence.knownEntityLocs ]
 
 			allEntities = predictedEntities + knownEntities
 			for id,locs,type in allEntities:
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 				outData['denotations'].append(entity)
 
 		topR = 0
-		for relName, id1, id2 in relations:
+		for relInfo, id1, id2 in relations:
 			if id1 in idConversion:
 				id1 = idConversion[id1]
 			if id2 in idConversion:
@@ -98,7 +98,7 @@ if __name__ == "__main__":
 			topR += 1
 			rel['id'] = "R%d" % topR
 			rel['obj'] = id1
-			rel['pred'] = relName
+			rel['pred'] = relInfo[0]
 			rel['subj'] = id2
 			outData['relations'].append(rel)
 
@@ -118,5 +118,5 @@ if __name__ == "__main__":
 		outFilename = outDir + filename + '.json'
 		with open(outFilename,'w') as f:
 			json.dump(outData,f)
-		print "Written to %s" % outFilename
+		#print "Written to %s" % outFilename
 

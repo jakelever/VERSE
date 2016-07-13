@@ -9,10 +9,10 @@ verseDir=$HERE/..
 
 # Parameters to use for the relation extractor
 parameters="C:0.357543477063 ; doFeatureSelection:False ; featureChoice:bigramsOfDependencyPath,dependencyPathElements,dependencyPathNearSelected,ngrams,ngramsOfDependencyPath,ngramsPOS,selectedTokenTypes,selectedlemmas,selectedngramsPOS ; featureSelectPerc:34 ; kernel:linear ; sentenceRange:0 ; svmAutoClassWeights:True ; svmClassWeight:8 ; tfidf:True"
-descFile=$HERE/bb.description_new
+descFile=$HERE/bb.description
 
 # The working directory
-outDir=tmp.BB3
+outDir=$PWD/tmp.BB3
 rm -fr $outDir
 mkdir -p $outDir
 cd $outDir
@@ -41,28 +41,40 @@ perl -i -ne 'print if !/^T\d+\t(Title|Paragraph)/x' BioNLP-ST-2016_BB-event_test
 perl -pi -e 's/^R/E/g' BioNLP-ST-2016_BB-event_train_AND_dev/*.a2
 
 # Run the text processor on the train&dev and test sets
-$jython $verseDir/core/TextProcessor.py --inDir BioNLP-ST-2016_BB-event_train_AND_dev --format ST --outFile BioNLP-ST-2016_BB-event_train_AND_dev.pickle
-$jython $verseDir/core/TextProcessor.py --inDir BioNLP-ST-2016_BB-event_test --format ST --outFile BioNLP-ST-2016_BB-event_test.pickle
+$jython $verseDir/core/TextProcessor.py --inDir BioNLP-ST-2016_BB-event_train_AND_dev --format ST --outFile BioNLP-ST-2016_BB-event_train_AND_dev.verse
+$jython $verseDir/core/TextProcessor.py --inDir BioNLP-ST-2016_BB-event_test --format ST --outFile BioNLP-ST-2016_BB-event_test.verse
 
 # Run the relation extractor!
-$python $verseDir/core/RelationExtractor.py --trainingPickle BioNLP-ST-2016_BB-event_train_AND_dev.pickle --testingPickle  BioNLP-ST-2016_BB-event_test.pickle --rel_descriptions $descFile --outPickle out.pickle --parameters "$parameters"
+$python $verseDir/core/RelationExtractor.py --trainingFile BioNLP-ST-2016_BB-event_train_AND_dev.verse --testingFile  BioNLP-ST-2016_BB-event_test.verse --relationDescriptions $descFile --outFile out.verse --parameters "$parameters"
+
+# Filter out any incorrect relations
+$python $verseDir/utils/Filter.py --inFile out.verse --outFile filtered.verse --relationFilters $descFile
 
 # Export to the results to the ST format
 mkdir -p ST
-$python $verseDir/utils/PickleToTriggerlessST.py --inPickle out.pickle --outDir ST
+$python $verseDir/utils/ExportToTriggerlessST.py --inFile filtered.verse --outDir ST
 
-# Filter out any incorrect relations (based on their types)
-find ST -name '*.a2' | xargs -I FILE basename FILE | sort | sed -e 's/\.a2//g' | xargs -I FILE echo "$python $verseDir/utils/DataCheck.py $HERE/bb.description BioNLP-ST-2016_BB-event_test/FILE.a1 ST/FILE.a2 ST/FILE.a2" | sh
+# Extract the Gold (the original submitted results)
+mkdir $outDir/gold
+cd $outDir/gold
+unzip $HERE/finalSubmission.BB3.zip
+cd $outDir
 
-# Transform the ST data back so that relations start with R (rather than E)
-perl -pi -e 's/^E/R/g' ST/*.a2
+# Transform the submitted data to the correct format (with E for events instead of R)
+perl -pi -e 's/^R/E/g' gold/*.a2
 
-# Calculate the MD5sum of the results
-md5=`find ST -name '*.a2' | sort | xargs cat | md5sum | cut -f 1 -d ' '`
-expected=3ca02cf04f67597647aaef69707e1648
+# Copy the TXT and A1 files from the original into the Gold and test directories
+cp BioNLP-ST-2016_BB-event_test/*.txt gold
+cp BioNLP-ST-2016_BB-event_test/*.a1 gold
+cp BioNLP-ST-2016_BB-event_test/*.txt ST
+cp BioNLP-ST-2016_BB-event_test/*.a1 ST
 
-# And finally check it
-if [[ "$md5" == "$expected" ]]; then
+# Compare the output of the relation extractor with the original submitted results (and get the overall F1-score)
+python $verseDir/evaluation/CompareSTs.py --goldDir gold --testDir ST > evaluate.results
+f1score=`cat evaluate.results | grep Summary | grep -oP "F1=[\d\.]*" | cut -f 2 -d '='`
+
+# And finally check that the F1-score is perfect
+if [[ "$f1score" == "1.000" ]]; then
 	echo "SUCCESS"
 else
 	echo "ERROR: Results don't match expected"

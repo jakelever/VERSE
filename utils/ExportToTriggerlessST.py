@@ -13,12 +13,11 @@ from SentenceModel import *
 
 # It's the main bit. Yay!
 if __name__ == "__main__":
-	parser = argparse.ArgumentParser(description='VERSE entity extractor')
+	parser = argparse.ArgumentParser(description='Export VERSE data to triggerless ST format')
 
-	parser.add_argument('--inPickle', required=True, type=str, help='')
-	#parser.add_argument('--origDir', required=True, type=str, help='')
-	parser.add_argument('--outDir', required=True, type=str, help='')
-	parser.add_argument('--triggerTypes', type=str)
+	parser.add_argument('--inFile', required=True, type=str, help='File to be exported')
+	parser.add_argument('--outDir', required=True, type=str, help='Output directory')
+	parser.add_argument('--triggerTypes', type=str, help='Comma-delimited list of types of entities that should be event triggers')
 
 	args = parser.parse_args()
 
@@ -26,7 +25,7 @@ if __name__ == "__main__":
 	if args.triggerTypes:
 		triggerTypes = set(args.triggerTypes.split(','))
 
-	with open(args.inPickle, 'r') as f:
+	with open(args.inFile, 'r') as f:
 		pickleData = pickle.load(f)
 
 	outDir = args.outDir
@@ -53,7 +52,7 @@ if __name__ == "__main__":
 		topE = 0
 		topT = -1
 		for sentence in sentenceData:
-			entityIDs = sentence.eventTriggerLocs.keys() + sentence.argumentTriggerLocs.keys()
+			entityIDs = sentence.predictedEntityLocs.keys() + sentence.knownEntityLocs.keys()
 			for eID in entityIDs:
 				if eID[0] == 'T':
 					num = int(eID[1:])
@@ -61,8 +60,8 @@ if __name__ == "__main__":
 
 		for sentence in sentenceData:
 			# {u'obj': u'Protein', u'span': {u'begin': 3871, u'end': 3874}, u'id': u'T52'}
-			predictedEntities = [ (id,sentence.eventTriggerLocs[id],sentence.eventTriggerTypes[id]) for id in sentence.eventTriggerLocs ]
-			knownEntities = [ (id,sentence.argumentTriggerLocs[id],sentence.argumentTriggerTypes[id]) for id in sentence.argumentTriggerLocs ]
+			predictedEntities = [ (id,sentence.predictedEntityLocs[id],sentence.predictedEntityTypes[id]) for id in sentence.predictedEntityLocs ]
+			knownEntities = [ (id,sentence.knownEntityLocs[id],sentence.knownEntityTypes[id]) for id in sentence.knownEntityLocs ]
 
 			allEntities = predictedEntities + knownEntities
 			for id,locs,type in allEntities:

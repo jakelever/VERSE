@@ -18,22 +18,22 @@ from SentenceModel import *
 
 def findEventTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.eventTriggerLocs:
-			return sentenceid,sentence.eventTriggerLocs[triggerid]
+		if triggerid in sentence.predictedEntityLocs:
+			return sentenceid,sentence.predictedEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of event trigger ID ('+triggerid+') in sentences')
 	
 def findArgumentTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.argumentTriggerLocs:
-			return sentenceid,sentence.argumentTriggerLocs[triggerid]
+		if triggerid in sentence.knownEntityLocs:
+			return sentenceid,sentence.knownEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of argument trigger ID ('+triggerid+') in sentences')
 
 def findTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.eventTriggerLocs:
-			return sentenceid,sentence.eventTriggerLocs[triggerid]
-		if triggerid in sentence.argumentTriggerLocs:
-			return sentenceid,sentence.argumentTriggerLocs[triggerid]
+		if triggerid in sentence.predictedEntityLocs:
+			return sentenceid,sentence.predictedEntityLocs[triggerid]
+		if triggerid in sentence.knownEntityLocs:
+			return sentenceid,sentence.knownEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of trigger ID ('+triggerid+') in sentences')
 
 
@@ -64,9 +64,9 @@ def generateModificationExamples(sentenceAndEventData,targetModifications={}):
 		# Then check if any are already marked as positive and add to the appropriate list of examples
 		for sentenceid,sentence in enumerate(sentenceData):
 			tokenCount = len(sentence.tokens)
-			for eventid in sentence.eventTriggerLocs:
-				locs = sentence.eventTriggerLocs[eventid]
-				type = sentence.eventTriggerTypes[eventid]
+			for eventid in sentence.predictedEntityLocs:
+				locs = sentence.predictedEntityLocs[eventid]
+				type = sentence.predictedEntityTypes[eventid]
 					
 				example = Example(filename, sentenceData, arg1_sentenceid=sentenceid, arg1_locs=locs)
 				examples.append(example)
@@ -155,15 +155,14 @@ def loadMatrixFromFile(filename):
 		
 # It's the main bit. Yay!
 if __name__ == "__main__":
-	parser = argparse.ArgumentParser(description='VERSE modification extractor')
+	parser = argparse.ArgumentParser(description='VERSE Modification Extraction tool')
 
-	parser.add_argument('--trainingPickle', required=True, type=str, help='')
-	parser.add_argument('--testingPickle', required=True, type=str, help='')
-
-	parser.add_argument('--modification_descriptions', required=True, type=str, help='')
-	parser.add_argument('--mergeWithExisting', action='store_true',  help='')
-	parser.add_argument('--parameters', type=str, help='')
-	parser.add_argument('--outPickle', type=str, help='')
+	parser.add_argument('--trainingFile', required=True, type=str, help='Parsed-text file containing the training data')
+	parser.add_argument('--testingFile', required=True, type=str, help='Parsed-text file containing the test data to predict modifications for')
+	parser.add_argument('--modificationDescriptions', required=True, type=str, help='Description file containing list of modification types to predict')
+	parser.add_argument('--mergeWithExisting', action='store_true',  help='Whether to keep existing modifications in testingFile')
+	parser.add_argument('--parameters', type=str, help='Parameters to use for feature construction, selection and classification')
+	parser.add_argument('--outFile', type=str, help='Output filename for data with predicted modifications')
 	args = parser.parse_args()
 
 	parameters = {}
@@ -176,13 +175,13 @@ if __name__ == "__main__":
 	if "sentenceRange" in parameters:
 		sentenceRange = int(parameters["sentenceRange"])
 	
-	trainFilename = args.trainingPickle
+	trainFilename = args.trainingFile
 	with open(trainFilename, 'r') as f:
 		trainingSentenceAndEventData = pickle.load(f)
 	print "Loaded " + trainFilename
 
 	targetModifications = []
-	with open(args.modification_descriptions,'r') as f:
+	with open(args.modificationDescriptions,'r') as f:
 		for line in f:
 			targetModifications.append(line.strip())
 
@@ -196,9 +195,9 @@ if __name__ == "__main__":
 	trigVec,trigFS,trigClf = None,None,None
 	_,trigVec,trigFS,trigClf = createModificationClassifier(trainingSentenceAndEventData,targetModificationsToIDs,parameters)
 
-	with open(args.testingPickle, 'r') as f:
+	with open(args.testingFile, 'r') as f:
 		testingSentenceAndEventData = pickle.load(f)
-	print "Loaded " + args.testingPickle
+	print "Loaded " + args.testingFile
 	
 	if not args.mergeWithExisting:
 		print "Blanking test data..."
@@ -239,7 +238,7 @@ if __name__ == "__main__":
 			modifications = testingSentenceAndEventData[sentenceFilename][2]
 
 			entityID = None
-			for tmpID,tmpLocs in sentence.eventTriggerLocs.iteritems():
+			for tmpID,tmpLocs in sentence.predictedEntityLocs.iteritems():
 				if tmpLocs == locs:
 					entityID = tmpID
 					break
@@ -253,7 +252,7 @@ if __name__ == "__main__":
 			modifications[triggerIDTxt] = (modType,entityID)
 
 			
-	with open(args.outPickle, 'w') as f:
+	with open(args.outFile, 'w') as f:
 		pickle.dump(testingSentenceAndEventData,f)
 		
 	print "Complete."

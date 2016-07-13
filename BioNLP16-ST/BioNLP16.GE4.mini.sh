@@ -34,17 +34,20 @@ find bionlp-st-ge-2016-test-proteins/ -name '*.json' | sort | tail -n +20 | xarg
 
 # Fix the various files (remove duplicates and rename non-protein entities to have EE id - to be predicted)
 find bionlp-st-ge-2016-* -name '*.json' | xargs -I FILE $python $verseDir/utils/RemoveDuplicatesInJSON.py FILE
-find bionlp-st-ge-2016-* -name '*.json' | xargs -I FILE $python $verseDir/utils/FixJSONData.py FILE
+find bionlp-st-ge-2016-* -name '*.json' | xargs -I FILE $python $verseDir/utils/CleanupGE4Data.py FILE
 
 # Filenames and directories to work with
-trainOrig=train.pickle
-test=test.pickle
+trainOrig=train.verse
+test=test.verse
 trainJsonDir=bionlp-st-ge-2016-reference
 testJsonDir=bionlp-st-ge-2016-test-proteins
 
+# Set entities that are "known" through-out
+knownEntities="Protein"
+
 # Run the text processor (note that --splitTokensForGE4 option)
-$jython $verseDir/core/TextProcessor.py --format JSON --inDir $trainJsonDir --outFile $trainOrig --splitTokensForGE4
-$jython $verseDir/core/TextProcessor.py --format JSON --inDir $testJsonDir --outFile $test --splitTokensForGE4
+$jython $verseDir/core/TextProcessor.py --format JSON --inDir $trainJsonDir --outFile $trainOrig --splitTokensForGE4 --knownEntities "$knownEntities"
+$jython $verseDir/core/TextProcessor.py --format JSON --inDir $testJsonDir --outFile $test --splitTokensForGE4 --knownEntities "$knownEntities"
 
 # Load the paramters
 parameters="featureChoice:ngrams; doFeatureSelection:True; featureSelectPerc:5; kernel:linear"
@@ -53,34 +56,34 @@ rel_parameters=$parameters
 modSpeculationparameters=$parameters
 modNegationparameters=$parameters
 
-# Add on additional parameters necessary for the GE4 task"
-rel_parameters="$rel_parameters ; doGE4Things:True ; doFiltering:True"
+# Add on additional filtering parameter necessary for the GE4 task
+rel_parameters="$rel_parameters ; doFiltering:True"
 
 # Clear out any predicted data from the test file
-$python $verseDir/utils/RemovePredicted.py --inPickle $test --outPickle start.pickle
+$python $verseDir/utils/RemovePredicted.py --inFile $test --outFile start.verse
 
 # Run the entity predictor
-$python $verseDir/core/EntityExtractor.py --trainingPickle $trainOrig --testingPickle start.pickle --outPickle entities.pickle --parameters "$entity_parameters" --entity_descriptions $auxDir/entity.descriptions
+$python $verseDir/core/EntityExtractor.py --trainingFile $trainOrig --testingFile start.verse --outFile entities.verse --parameters "$entity_parameters" --entityDescriptions $auxDir/entity.descriptions
 
 # Run the relation extractor
-$python $verseDir/core/RelationExtractor.py --trainingPickle $trainOrig --testingPickle entities.pickle --outPickle relations.pickle --parameters "$rel_parameters" --rel_descriptions $auxDir/rel.filters
+$python $verseDir/core/RelationExtractor.py --trainingFile $trainOrig --testingFile entities.verse --outFile relations.verse --parameters "$rel_parameters" --relationDescriptions $auxDir/rel.filters
 
 # Run the mod extractor (for speculation)
-$python $verseDir/core/ModificationExtractor.py --trainingPickle $trainOrig --testingPickle relations.pickle --outPickle modSpeculation.pickle --parameters "$modSpeculationparameters" --modification_descriptions $auxDir/mod.speculation
+$python $verseDir/core/ModificationExtractor.py --trainingFile $trainOrig --testingFile relations.verse --outFile modSpeculation.verse --parameters "$modSpeculationparameters" --modificationDescriptions $auxDir/mod.speculation
 
 # Run the mod extractor (for negation)
-$python $verseDir/core/ModificationExtractor.py --trainingPickle $trainOrig --testingPickle modSpeculation.pickle --outPickle modSpeculationNegation.pickle --parameters "$modNegationparameters" --modification_descriptions $auxDir/mod.negation --mergeWithExisting
+$python $verseDir/core/ModificationExtractor.py --trainingFile $trainOrig --testingFile modSpeculation.verse --outFile modSpeculationNegation.verse --parameters "$modNegationparameters" --modificationDescriptions $auxDir/mod.negation --mergeWithExisting
 
 # Filter the results for correct relations and modifications
-$python $verseDir/utils/FilterPickle.py --rel_filters $auxDir/rel.filters --mod_filters $auxDir/mod.filters --inPickle modSpeculationNegation.pickle --outPickle filtered.pickle
+$python $verseDir/utils/Filter.py --relationFilters $auxDir/rel.filters --modificationFilters $auxDir/mod.filters --inFile modSpeculationNegation.verse --outFile filtered.verse
 
 # Link the final version
-ln -s filtered.pickle final.pickle
+ln -s filtered.verse final.verse
 
 # Export the results to JSON
 triggerTypes="Acetylation,Binding,Deacetylation,Gene_expression,Localization,Negative_regulation,Phosphorylation,Positive_regulation,Protein_catabolism,Protein_modification,Regulation,Transcription,Ubiquitination"
 mkdir json
-$python $verseDir/utils/PickleToJson.py --inPickle final.pickle --outDir json --triggerTypes "$triggerTypes" --origDir bionlp-st-ge-2016-test-proteins
+$python $verseDir/utils/ExportToJSON.py --inFile final.verse --outDir json --triggerTypes "$triggerTypes" --origDir bionlp-st-ge-2016-test-proteins
 
 # Calculate the MD5sum of the results
 md5=`find json -name '*.json' | sort | xargs cat | md5sum | cut -f 1 -d ' '`

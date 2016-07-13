@@ -15,9 +15,9 @@ def compareEvents(gSentenceData,tSentenceData):
 		
 	scores = defaultdict(Counter)
 	for i in range(len(gSentenceData)):
-		goldTypes,goldLocs = gSentenceData[i].eventTriggerTypes.values(),gSentenceData[i].eventTriggerLocs.values()
+		goldTypes,goldLocs = gSentenceData[i].predictedEntityTypes.values(),gSentenceData[i].predictedEntityLocs.values()
 		assert len(goldTypes)==len(goldLocs)
-		testTypes,testLocs = tSentenceData[i].eventTriggerTypes.values(),tSentenceData[i].eventTriggerLocs.values()
+		testTypes,testLocs = tSentenceData[i].predictedEntityTypes.values(),tSentenceData[i].predictedEntityLocs.values()
 		assert len(testTypes)==len(testLocs)
 		
 		
@@ -62,13 +62,13 @@ def compare(goldData,testData):
 
 if __name__ == "__main__":
 	argparser = argparse.ArgumentParser(description='Evaluation tool for entity extraction results')
-	argparser.add_argument('--goldPickle', required=True, type=str, help='Directory containing gold files')
-	argparser.add_argument('--testPickle', required=True, type=str, help='Directory containing test files')
+	argparser.add_argument('--goldFile', required=True, type=str, help='File containing gold data')
+	argparser.add_argument('--testFile', required=True, type=str, help='File containing test data')
 	args = argparser.parse_args()
 	
-	with open(args.goldPickle, 'r') as f:
+	with open(args.goldFile, 'r') as f:
 		goldData = pickle.load(f)
-	with open(args.testPickle, 'r') as f:
+	with open(args.testFile, 'r') as f:
 		testData = pickle.load(f)
 	
 	assert set(goldData.keys()) == set(testData.keys()), "Mismatch between data in gold data and test data"

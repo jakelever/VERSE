@@ -12,10 +12,10 @@ from DataLoad import *
 
 def findTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.eventTriggerLocs:
-			return sentenceid,sentence.eventTriggerLocs[triggerid]
-		if triggerid in sentence.argumentTriggerLocs:
-			return sentenceid,sentence.argumentTriggerLocs[triggerid]
+		if triggerid in sentence.predictedEntityLocs:
+			return sentenceid,sentence.predictedEntityLocs[triggerid]
+		if triggerid in sentence.knownEntityLocs:
+			return sentenceid,sentence.knownEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of trigger ID ('+triggerid+') in sentences')
 
 
@@ -89,20 +89,20 @@ def compare(goldData,testData,targetRelations):
 	return relScores
 
 if __name__ == "__main__":
-	argparser = argparse.ArgumentParser(description='Evaluation tool for entity extraction results')
-	argparser.add_argument('--goldPickle', required=True, type=str, help='Directory containing gold files')
-	argparser.add_argument('--testPickle', required=True, type=str, help='Directory containing test files')
-	argparser.add_argument('--rel_descriptions', type=str, help='')
+	argparser = argparse.ArgumentParser(description='Evaluation tool for modification extraction results')
+	argparser.add_argument('--goldFile', required=True, type=str, help='File containing gold data')
+	argparser.add_argument('--testFile', required=True, type=str, help='File containing test data')
+	parser.add_argument('--relationDescriptions', required=True, type=str, help='Description file containing list of relation types with arguments to evaluate')
 	args = argparser.parse_args()
 	
-	with open(args.goldPickle, 'r') as f:
+	with open(args.goldFile, 'r') as f:
 		goldData = pickle.load(f)
-	with open(args.testPickle, 'r') as f:
+	with open(args.testFile, 'r') as f:
 		testData = pickle.load(f)
 
 	targetRelations,targetArguments = set(),set()
-	if args.rel_descriptions:
-		with open(args.rel_descriptions,'r') as f:
+	if args.relationDescriptions:
+		with open(args.relationDescriptions,'r') as f:
 			for line in f:
 				name,type1,type2 = line.strip().split('\t')
 				targetRelations.add((name,type1,type2))

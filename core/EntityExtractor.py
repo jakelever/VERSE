@@ -18,22 +18,22 @@ from SentenceModel import *
 
 def findEventTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.eventTriggerLocs:
-			return sentenceid,sentence.eventTriggerLocs[triggerid]
+		if triggerid in sentence.predictedEntityLocs:
+			return sentenceid,sentence.predictedEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of event trigger ID ('+triggerid+') in sentences')
 	
 def findArgumentTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.argumentTriggerLocs:
-			return sentenceid,sentence.argumentTriggerLocs[triggerid]
+		if triggerid in sentence.knownEntityLocs:
+			return sentenceid,sentence.knownEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of argument trigger ID ('+triggerid+') in sentences')
 
 def findTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.eventTriggerLocs:
-			return sentenceid,sentence.eventTriggerLocs[triggerid]
-		if triggerid in sentence.argumentTriggerLocs:
-			return sentenceid,sentence.argumentTriggerLocs[triggerid]
+		if triggerid in sentence.predictedEntityLocs:
+			return sentenceid,sentence.predictedEntityLocs[triggerid]
+		if triggerid in sentence.knownEntityLocs:
+			return sentenceid,sentence.knownEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of trigger ID ('+triggerid+') in sentences')
 
 
@@ -55,9 +55,9 @@ def generateTriggerExamples(sentenceAndEventData,targetEvents={}):
 
 			for sentenceid,sentence in enumerate(sentenceData):
 				tokenCount = len(sentence.tokens)
-				for eventid in sentence.eventTriggerLocs:
-					locs = sentence.eventTriggerLocs[eventid]
-					type = sentence.eventTriggerTypes[eventid]
+				for eventid in sentence.predictedEntityLocs:
+					locs = sentence.predictedEntityLocs[eventid]
+					type = sentence.predictedEntityTypes[eventid]
 					if type in targetEvents:
 						tokens = [ sentence.tokens[l].word for l in locs ]
 						positiveEntities.add(tuple(tokens))
@@ -78,21 +78,21 @@ def generateTriggerExamples(sentenceAndEventData,targetEvents={}):
 		for sentenceid,sentence in enumerate(sentenceData):
 			tokenCount = len(sentence.tokens)
 			positiveEventTriggerLocs = {}
-			for eventid in sentence.eventTriggerLocs:
-				locs = sentence.eventTriggerLocs[eventid]
-				type = sentence.eventTriggerTypes[eventid]
+			for eventid in sentence.predictedEntityLocs:
+				locs = sentence.predictedEntityLocs[eventid]
+				type = sentence.predictedEntityTypes[eventid]
 				tokens = [ sentence.tokens[l].word for l in locs ]
 				if type in targetEvents:
 					classid = targetEvents[type]
 					positiveEventTriggerLocs[tuple(locs)] = classid
 			positiveEventTriggerLocsProcessed = []
-			#for eventTriggerID,argLocs in sentence.eventTriggerLocs.iteritems():
+			#for eventTriggerID,argLocs in sentence.predictedEntityLocs.iteritems():
 			#print positiveEventTriggerLocs
 				
 			# We're going to remove all argument locs
 			possibleLocs = range(tokenCount)
 			usedLocs = set()
-			for argTriggerID,argLocs in sentence.argumentTriggerLocs.iteritems():
+			for argTriggerID,argLocs in sentence.knownEntityLocs.iteritems():
 				usedLocs.update(argLocs)
 				for loc in argLocs:
 					if loc in possibleLocs:
@@ -198,16 +198,14 @@ def loadMatrixFromFile(filename):
 		
 # It's the main bit. Yay!
 if __name__ == "__main__":
-	parser = argparse.ArgumentParser(description='VERSE entity extractor')
+	parser = argparse.ArgumentParser(description='VERSE Entity Extraction tool')
 
-	parser.add_argument('--trainingPickle', required=True, type=str, help='')
-	parser.add_argument('--testingPickle', required=True, type=str, help='')
-
-	parser.add_argument('--entity_descriptions', required=True, type=str, help='')
+	parser.add_argument('--trainingFile', required=True, type=str, help='Parsed-text file containing the training data')
+	parser.add_argument('--testingFile', required=True, type=str, help='Parsed-text file containing the test data to predict entities for')
+	parser.add_argument('--entityDescriptions', required=True, type=str, help='Description file containing list of entity types to predict')
 	parser.add_argument('--mergeWithExistingEntities', action='store_true',  help='If existing entities exist in the testingPickle, they aren\'t removed, and are simply added to')
-
-	parser.add_argument('--parameters', type=str, help='')
-	parser.add_argument('--outPickle', type=str, help='')
+	parser.add_argument('--parameters', type=str, help='Parameters to use for feature construction, selection and classification')
+	parser.add_argument('--outFile', type=str, help='Output filename for data with predicted entities')
 	args = parser.parse_args()
 
 	parameters = {}
@@ -220,7 +218,7 @@ if __name__ == "__main__":
 	if "sentenceRange" in parameters:
 		sentenceRange = int(parameters["sentenceRange"])
 	
-	trainFilename = args.trainingPickle
+	trainFilename = args.trainingFile
 	with open(trainFilename, 'r') as f:
 		trainingSentenceAndEventData = pickle.load(f)
 	print "Loaded " + trainFilename
@@ -231,13 +229,13 @@ if __name__ == "__main__":
 		relations = data[1]
 
 		for sentence in sentenceData:
-			for id,type in sentence.eventTriggerTypes.iteritems():
+			for id,type in sentence.predictedEntityTypes.iteritems():
 				tmpTargetEntities.add(type)
 	
 	print tmpTargetEntities
 
 	targetEntities = []
-	with open(args.entity_descriptions,'r') as f:
+	with open(args.entityDescriptions,'r') as f:
 		for line in f:
 			targetEntities.append(line.strip())
 
@@ -251,17 +249,17 @@ if __name__ == "__main__":
 	trigVec,trigFS,trigClf = None,None,None
 	_,trigVec,trigFS,trigClf = createTriggerClassifier(trainingSentenceAndEventData,targetEntitiesToIDs,parameters)
 
-	with open(args.testingPickle, 'r') as f:
+	with open(args.testingFile, 'r') as f:
 		testingSentenceAndEventData = pickle.load(f)
-	print "Loaded " + args.testingPickle
+	print "Loaded " + args.testingFile
 	
 	if not args.mergeWithExistingEntities:
 		print "Blanking test data..."
 		for filename in testingSentenceAndEventData:
 			(sentenceData,relations,modifiers) = testingSentenceAndEventData[filename]
 			for s in sentenceData:
-				s.eventTriggerLocs = {}
-				s.eventTriggerTypes = {}
+				s.predictedEntityLocs = {}
+				s.predictedEntityTypes = {}
 				s.refreshTakenLocs()
 			testingSentenceAndEventData[filename] = (sentenceData,relations,modifiers)
 
@@ -314,7 +312,7 @@ if __name__ == "__main__":
 			# TODO: These modifications should maybe be done of a separate version for each argument type (or at least so that a "clean" version is used for classification each time)
 
 			
-	with open(args.outPickle, 'w') as f:
+	with open(args.outFile, 'w') as f:
 		pickle.dump(testingSentenceAndEventData,f)
 		
 	print "Complete."

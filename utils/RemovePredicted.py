@@ -20,21 +20,21 @@ from SentenceModel import *
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Removes entities, relations and modifications that are to be predicted')
 
-	parser.add_argument('--inPickle', required=True, type=str, help='')
-	parser.add_argument('--outPickle', required=True, type=str, help='')
+	parser.add_argument('--inFile', required=True, type=str, help='File to be filtered')
+	parser.add_argument('--outFile', required=True, type=str, help='Filename for output filtered file')
 
 	args = parser.parse_args()
 
-	with open(args.inPickle, 'r') as f:
+	with open(args.inFile, 'r') as f:
 		data = pickle.load(f)
-	print "Loaded " + args.inPickle
+	print "Loaded " + args.inFile
 	
 	print "Blanking predicted data..."
 	for filename in data:
 		(sentenceData,_,_) = data[filename]
 		for s in sentenceData:
-			s.eventTriggerLocs = {}
-			s.eventTriggerTypes = {}
+			s.predictedEntityLocs = {}
+			s.predictedEntityTypes = {}
 			s.refreshTakenLocs()
 			s.invertTriggers()
 		relations = []
@@ -42,7 +42,7 @@ if __name__ == "__main__":
 		data[filename] = (sentenceData,relations,modifications)
 
 			
-	with open(args.outPickle, 'w') as f:
+	with open(args.outFile, 'w') as f:
 		pickle.dump(data,f)
 		
 	print "Complete."

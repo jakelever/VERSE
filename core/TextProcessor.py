@@ -31,7 +31,7 @@ def within(pos,start,end):
 	return pos > start and pos < end
 	
 from __builtin__ import zip # To deal with Jython conflict with java Zip package
-def parseTextWithTriggers(text,denotations,doTokenPreprocessing):
+def parseTextWithTriggers(text,denotations,doTokenPreprocessing,knownEntities):
 	pipeline = getPipeline()
 
 	denotationTree = IntervalTree()
@@ -139,14 +139,12 @@ def parseTextWithTriggers(text,denotations,doTokenPreprocessing):
 		for triggerID,locs in triggerLocations.iteritems():
 			# Trigger is following tuple (typeName, positions, tokens)
 			triggerType,_,_ = denotations[triggerID]
-			if triggerID[0] == "T":
+			if knownEntities is None or triggerType in knownEntities:
 				argumentTriggerLocs[triggerID] = locs
 				argumentTriggerTypes[triggerID] = triggerType
-			elif triggerID[0] == "E":
+			else:
 				eventTriggerLocs[triggerID] = locs
 				eventTriggerTypes[triggerID] = triggerType
-			else:
-				raise RuntimeError("Unexpected trigger ID (should start with T or E) : %s" % triggerID)
 			
 		sentenceData = SentenceModel(tokens, dependencies, eventTriggerLocs, eventTriggerTypes, argumentTriggerLocs, argumentTriggerTypes)
 		allSentenceData.append(sentenceData)
@@ -155,14 +153,14 @@ def parseTextWithTriggers(text,denotations,doTokenPreprocessing):
 	
 def findEventTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.eventTriggerLocs:
-			return sentenceid,sentence.eventTriggerLocs[triggerid]
+		if triggerid in sentence.predictedEntityLocs:
+			return sentenceid,sentence.predictedEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of event trigger ID ('+triggerid+') in sentences')
 	
 def findArgumentTrigger(sentenceData):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.argumentTriggerLocs:
-			return sentenceid,sentence.argumentTriggerLocs[triggerid]
+		if triggerid in sentence.knownEntityLocs:
+			return sentenceid,sentence.knownEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of argument trigger ID ('+triggerid+') in sentences')
 
 def isComplexEvent(eventTrigger,arguments):
@@ -186,13 +184,14 @@ def isComplexEvent(eventTrigger,arguments):
 # It's the main bit. Yay!
 if __name__ == "__main__":
 
-	argparser = argparse.ArgumentParser(description='Text parsing pipeline for a directory of ST format annotated text')
+	argparser = argparse.ArgumentParser(description='Text parsing pipeline for a directory of text in ST or JSON format')
 	argparser.add_argument('--inDir', required=True, type=str, help='Directory containing input files')
 	argparser.add_argument('--format', default="ST", type=str, help='Format to load files (ST/JSON, default=ST)')
-	argparser.add_argument('--splitTokensForGE4', action='store_true', help='Split tokens using GE4')
-	argparser.add_argument('--outFile', required=True, type=str, help='Output filename for pickled parsed data')
+	argparser.add_argument('--splitTokensForGE4', action='store_true', help='Whether to split tokens using GE4 logic')
+	argparser.add_argument('--knownEntities', help='Comma-separated list of entities that are known through-out')
+	argparser.add_argument('--outFile', required=True, type=str, help='Output filename for parsed-text data')
 	args = argparser.parse_args()
-
+	
 	assert args.format == "ST" or args.format == "JSON", "--format must be ST or JSON"
 
 	inDir = args.inDir
@@ -206,6 +205,10 @@ if __name__ == "__main__":
 	splitTokensForGE4 = False
 	if args.splitTokensForGE4:
 		splitTokensForGE4 = True
+		
+	knownEntities = None
+	if args.knownEntities:
+		knownEntities = set(args.knownEntities.split(","))
 	
 	allSentenceAndEventData = {}
 	for filename in os.listdir(inDir):
@@ -222,7 +225,7 @@ if __name__ == "__main__":
 					
 			text,denotations,relations,modifications = loadDataFromSTFormat(txtFile,a1File,a2File)
 			
-			sentenceData = parseTextWithTriggers(text,denotations,splitTokensForGE4)
+			sentenceData = parseTextWithTriggers(text,denotations,splitTokensForGE4,knownEntities)
 			
 			allSentenceAndEventData[filenameNoExt] = (sentenceData,relations,modifications)
 		elif args.format == "JSON" and filename.endswith(".json"):
@@ -233,7 +236,7 @@ if __name__ == "__main__":
 
 			text,denotations,relations,modifications = loadDataFromJSON(jsonFile)
 			
-			sentenceData = parseTextWithTriggers(text,denotations,splitTokensForGE4)
+			sentenceData = parseTextWithTriggers(text,denotations,splitTokensForGE4,knownEntities)
 			
 			allSentenceAndEventData[filenameNoExt] = (sentenceData,relations,modifications)
 

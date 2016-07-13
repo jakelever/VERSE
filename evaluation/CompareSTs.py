@@ -16,24 +16,17 @@ def groupEventsAndRelations(denotations,relations):
 		if id.startswith('E'): # It's an event trigger
 			events[tuple(positions)] = {'EventType':typeName}
 			
-	for (eventid, relName, argID) in relations:
-		if relName[0] == True: # Triggered
-			_, eventName, argName = relName
-			eventPositions = tuple(denotations[eventid][1])
-			argPositions = tuple(denotations[argID][1])
-			assert eventName == events[eventPositions]['EventType']
-			events[eventPositions][argName] = argPositions
-		else:
-			_, eventName, argName1, argName2 = relName
-			
-			args = [(argName1,eventid),(argName2,argID)]
-			args = sorted(args)
-			
-			arg1Positions = tuple(denotations[args[0][1]][1])
-			arg2Positions = tuple(denotations[args[1][1]][1])
-			
-			key = (eventName, args[0][0], arg1Positions, args[1][0], arg2Positions)
-			triggerless[key] = True
+	for (relName, eventID, argID) in relations:
+		eventName, argName1, argName2 = relName
+		
+		args = [(argName1,eventID),(argName2,argID)]
+		args = sorted(args)
+		
+		arg1Positions = tuple(denotations[args[0][1]][1])
+		arg2Positions = tuple(denotations[args[1][1]][1])
+		
+		key = (eventName, args[0][0], arg1Positions, args[1][0], arg2Positions)
+		triggerless[key] = True
 			
 	return events, triggerless
 	
@@ -130,8 +123,8 @@ def combineCounters(c1,c2):
 	return newScores
 	
 def compare(goldTxtFile,goldA1File,goldA2File,testTxtFile,testA1File,testA2File):
-	gText,gDenotations,gRelations,gModifications,gCoreferences,gEquivalences = loadDataFromSTFormat(goldTxtFile,goldA1File,goldA2File)
-	tText,tDenotations,tRelations,tModifications,tCoreferences,tEquivalences = loadDataFromSTFormat(testTxtFile,testA1File,testA2File)
+	gText,gDenotations,gRelations,gModifications = loadDataFromSTFormat(goldTxtFile,goldA1File,goldA2File)
+	tText,tDenotations,tRelations,tModifications = loadDataFromSTFormat(testTxtFile,testA1File,testA2File)
 	
 	# TODO: Check modifications (and others if needed)
 	# TODO: Allow more than two-way triggerless relation evaluation
@@ -202,7 +195,7 @@ if __name__ == "__main__":
 		fp = fp + scores['FP']
 		fn = fn + scores['FN']
 		partial = partial + scores['Partial']
-		recall,precision,fscore = 0.0,0.0,0.0
+		recall,precision,f1score = 0.0,0.0,0.0
 		if scores['TP'] > 0:
 			recall = scores['TP'] / float(scores['TP'] + scores['FN'])
 			precision = scores['TP'] / float(scores['TP'] + scores['FP'])
@@ -211,7 +204,7 @@ if __name__ == "__main__":
 		print "TP=%d\tFP=%d\tFN=%d\tPartial=%d\tR=%.3f\tP=%.3f\tF1=%.3f\t%s" % (scores['TP'],scores['FP'],scores['FN'],scores['Partial'],recall,precision,f1score,eventType)
 
 		
-	recall,precision,fscore = 0.0,0.0,0.0
+	recall,precision,f1score,f0point1score = 0.0,0.0,0.0,0.0
 	if tp > 0:
 		recall = tp / float(tp+fn)
 		precision = tp / float(tp + fp)

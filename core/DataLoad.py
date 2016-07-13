@@ -125,7 +125,7 @@ def loadDataFromSTFormat(txtFile,a1File,a2File):
 			denotations[eventid] = predictedTriggers[eventTrigger]
 			for argName,denotationID in arguments.iteritems():
 				#relName = (True, eventName, argName) # True for triggered
-				relation = (argName, eventid, denotationID)
+				relation = ((argName,), eventid, denotationID)
 				if denotationID in predictedTriggers:
 					assert denotationID[0] == 'E'
 					denotations[denotationID] = predictedTriggers[denotationID]
@@ -156,7 +156,7 @@ def loadDataFromJSON(filename):
 				obj = r['obj']
 				pred = r['pred']
 				subj = r['subj']
-				relation = (pred,obj,subj)
+				relation = ((pred,),obj,subj)
 				relations.append(relation)
 		if 'modifications' in data:
 			for m in data['modifications']:

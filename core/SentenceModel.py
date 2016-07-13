@@ -79,8 +79,8 @@ class SentenceModel:
 		#print
 		#print self.dependencies
 		#print
-		#print self.eventTriggerLocs
-		#print self.argumentTriggerLocs
+		#print self.predictedEntityLocs
+		#print self.knownEntityLocs
 		#print
 		#print minSet
 		#self.printDependencyGraph()
@@ -134,36 +134,36 @@ class SentenceModel:
 		#	self.takenLocs.add(loc)
 		assert not tuple(locs) in self.takenLocs, 'Triggers cannot overlap exactly'
 			
-		assert not triggerid in self.eventTriggerLocs, "Trigger ID already exists in sentence"
-		assert not triggerid in self.argumentTriggerLocs, "Trigger ID already exists in sentence"
+		assert not triggerid in self.predictedEntityLocs, "Trigger ID already exists in sentence"
+		assert not triggerid in self.knownEntityLocs, "Trigger ID already exists in sentence"
 					
-		self.eventTriggerLocs[triggerid] = locs
-		self.eventTriggerTypes[triggerid] = type
+		self.predictedEntityLocs[triggerid] = locs
+		self.predictedEntityTypes[triggerid] = type
 		#self.locsToTriggerIDs[locs] = triggerid
 		
 	def invertTriggers(self):
 		self.locsToTriggerIDs = {}
 		self.locsToTriggerTypes = {}
-		for triggerid,locs in self.eventTriggerLocs.iteritems():
-			type = self.eventTriggerTypes[triggerid]
+		for triggerid,locs in self.predictedEntityLocs.iteritems():
+			type = self.predictedEntityTypes[triggerid]
 			self.locsToTriggerIDs[tuple(locs)] = triggerid
 			self.locsToTriggerTypes[tuple(locs)] = type
-		for triggerid,locs in self.argumentTriggerLocs.iteritems():
-			type = self.argumentTriggerTypes[triggerid]
+		for triggerid,locs in self.knownEntityLocs.iteritems():
+			type = self.knownEntityTypes[triggerid]
 			self.locsToTriggerIDs[tuple(locs)] = triggerid
 			self.locsToTriggerTypes[tuple(locs)] = type
 		#print "MOO"
 
 	def refreshTakenLocs(self):
 		self.takenLocs = set()
-		for triggerid,locs in self.eventTriggerLocs.iteritems():
+		for triggerid,locs in self.predictedEntityLocs.iteritems():
 			for loc in locs:
 				assert loc >= 0
 				assert loc < len(self.tokens)
 				assert not loc in self.takenLocs, 'Triggers cannot overlap'
 				#self.takenLocs.add(loc)
 			self.takenLocs.add(tuple(locs))
-		for triggerid,locs in self.argumentTriggerLocs.iteritems():
+		for triggerid,locs in self.knownEntityLocs.iteritems():
 			for loc in locs:
 				assert loc >= 0
 				assert loc < len(self.tokens)
@@ -183,10 +183,10 @@ class SentenceModel:
 		assert len(argumentTriggerLocs) == len(argumentTriggerTypes)
 		
 		self.tokens = tokens
-		self.eventTriggerLocs = eventTriggerLocs
-		self.eventTriggerTypes = eventTriggerTypes
-		self.argumentTriggerLocs = argumentTriggerLocs
-		self.argumentTriggerTypes = argumentTriggerTypes
+		self.predictedEntityLocs = eventTriggerLocs
+		self.predictedEntityTypes = eventTriggerTypes
+		self.knownEntityLocs = argumentTriggerLocs
+		self.knownEntityTypes = argumentTriggerTypes
 		self.dependencies = dependencies
 	
 		self.refreshTakenLocs()

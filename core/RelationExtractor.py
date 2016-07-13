@@ -18,22 +18,22 @@ from SentenceModel import *
 
 def findEventTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.eventTriggerLocs:
-			return sentenceid,sentence.eventTriggerLocs[triggerid]
+		if triggerid in sentence.predictedEntityLocs:
+			return sentenceid,sentence.predictedEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of event trigger ID ('+str(triggerid)+') in sentences')
 	
 def findArgumentTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.argumentTriggerLocs:
-			return sentenceid,sentence.argumentTriggerLocs[triggerid]
+		if triggerid in sentence.knownEntityLocs:
+			return sentenceid,sentence.knownEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of argument trigger ID ('+str(triggerid)+') in sentences')
 
 def findTrigger(sentenceData,triggerid):
 	for sentenceid, sentence in enumerate(sentenceData):
-		if triggerid in sentence.eventTriggerLocs:
-			return sentenceid,sentence.eventTriggerLocs[triggerid]
-		if triggerid in sentence.argumentTriggerLocs:
-			return sentenceid,sentence.argumentTriggerLocs[triggerid]
+		if triggerid in sentence.predictedEntityLocs:
+			return sentenceid,sentence.predictedEntityLocs[triggerid]
+		if triggerid in sentence.knownEntityLocs:
+			return sentenceid,sentence.knownEntityLocs[triggerid]
 	raise RuntimeError('Unable to find location of trigger ID ('+str(triggerid)+') in sentences')
 
 	
@@ -81,12 +81,12 @@ def generateRelationExamples(sentenceAndEventData,targetRelations,targetArgument
 				#print sentenceid1,sentenceid2
 				sentence1,sentence2 = sentenceData[sentenceid1],sentenceData[sentenceid2]
 			
-				eventLocsAndTypes1 = [ (sentence1.eventTriggerLocs[id],sentence1.eventTriggerTypes[id]) for id in sentence1.eventTriggerTypes ]
-				argsLocsAndTypes1 = [ (sentence1.argumentTriggerLocs[id],sentence1.argumentTriggerTypes[id]) for id in sentence1.argumentTriggerTypes ]
+				eventLocsAndTypes1 = [ (sentence1.predictedEntityLocs[id],sentence1.predictedEntityTypes[id]) for id in sentence1.predictedEntityTypes ]
+				argsLocsAndTypes1 = [ (sentence1.knownEntityLocs[id],sentence1.knownEntityTypes[id]) for id in sentence1.knownEntityTypes ]
 				possibleLocsAndTypes1 = eventLocsAndTypes1 + argsLocsAndTypes1
 				
-				eventLocsAndTypes2 = [ (sentence2.eventTriggerLocs[id],sentence2.eventTriggerTypes[id]) for id in sentence2.eventTriggerTypes ]
-				argsLocsAndTypes2 = [ (sentence2.argumentTriggerLocs[id],sentence2.argumentTriggerTypes[id]) for id in sentence2.argumentTriggerTypes ]
+				eventLocsAndTypes2 = [ (sentence2.predictedEntityLocs[id],sentence2.predictedEntityTypes[id]) for id in sentence2.predictedEntityTypes ]
+				argsLocsAndTypes2 = [ (sentence2.knownEntityLocs[id],sentence2.knownEntityTypes[id]) for id in sentence2.knownEntityTypes ]
 				possibleLocsAndTypes2 = eventLocsAndTypes2 + argsLocsAndTypes2
 							
 				for (locs1,type1),(locs2,type2) in itertools.product(possibleLocsAndTypes1,possibleLocsAndTypes2):
@@ -185,15 +185,13 @@ def loadMatrixFromFile(filename):
 		raise RuntimeError("Unknown type of matrix: %s" % type)
 # It's the main bit. Yay!
 if __name__ == "__main__":
-	parser = argparse.ArgumentParser(description='Generate a set of test data')
+	parser = argparse.ArgumentParser(description='VERSE Relation Extraction tool')
 
-	parser.add_argument('--trainingPickle', required=True, type=str, help='')
-
-	parser.add_argument('--rel_descriptions', required=True, type=str, help='')
-
-	parser.add_argument('--parameters', type=str, help='')
-	parser.add_argument('--testingPickle', required=True, type=str, help='')
-	parser.add_argument('--outPickle', type=str, help='')
+	parser.add_argument('--trainingFile', required=True, type=str, help='Parsed-text file containing the training data')
+	parser.add_argument('--testingFile', required=True, type=str, help='Parsed-text file containing the test data to predict modifications for')
+	parser.add_argument('--relationDescriptions', required=True, type=str, help='Description file containing list of relation types with arguments to predict')
+	parser.add_argument('--parameters', type=str, help='Parameters to use for feature construction, selection and classification')
+	parser.add_argument('--outFile', type=str, help='Output filename for data with predicted modifications')
 	args = parser.parse_args()
 
 	parameters = {}
@@ -206,7 +204,7 @@ if __name__ == "__main__":
 	if "sentenceRange" in parameters:
 		sentenceRange = int(parameters["sentenceRange"])
 	
-	trainFilename = args.trainingPickle
+	trainFilename = args.trainingFile
 	with open(trainFilename, 'r') as f:
 		trainingSentenceAndEventData = pickle.load(f)
 	print "Loaded " + trainFilename
@@ -229,11 +227,7 @@ if __name__ == "__main__":
 	for relName,type1,type2 in tmpTargetRelations:
 		print "%s\t%s\t%s" % (relName,type1,type2)
 	print "#"*30
-	#sys.exit(0)
 
-	doGE4Things = False
-	if 'doGE4Things' in parameters and parameters['doGE4Things'] == 'True':
-		doGE4Things = True
 	doFiltering = False
 	if 'doFiltering' in parameters and parameters['doFiltering'] == 'True':
 		doFiltering = True
@@ -241,18 +235,12 @@ if __name__ == "__main__":
 	#targetRelations = []
 	targetRelations,targetArguments = set(),set()
 	#typeLookup = {}
-	with open(args.rel_descriptions,'r') as f:
+	with open(args.relationDescriptions,'r') as f:
 		for line in f:
 			name,type1,type2 = line.strip().split('\t')
-			#t = tuple([False] + name.split(';'))
-			if doGE4Things:
-				targetRelations.add(name)
-			else:
-				targetRelations.add(tuple(name.split(';')))
+			
+			targetRelations.add(tuple(name.split(';')))
 			targetArguments.add((type1,type2))
-			#if type1 in typeLookup and typeLookup[type1] != name:
-			#	raise RuntimeError('All relations with the same first argument type must be of the same type')
-			#typeLookup[type1] = name
 
 	targetRelations = list(targetRelations)
 	targetRelations = sorted(targetRelations)
@@ -272,9 +260,9 @@ if __name__ == "__main__":
 	relData,argVec,argFS,argClf = createRelationClassifier(trainingSentenceAndEventData,targetRelationsToIDs,targetArguments,parameters,True,sentenceRange,doFiltering)
 
 
-	with open(args.testingPickle, 'r') as f:
+	with open(args.testingFile, 'r') as f:
 		testingSentenceAndEventData = pickle.load(f)
-	print "Loaded " + args.testingPickle
+	print "Loaded " + args.testingFile
 
 	# Empty the test data of any existing predictions (in case we load the wrong test file)
 	for filename in testingSentenceAndEventData:
@@ -338,7 +326,7 @@ if __name__ == "__main__":
 			#print "TEST",sentenceFilename,sentenceID1,sentenceID2,arg1Locs,arg2Locs,relType
 
 
-	with open(args.outPickle, 'w') as f:
+	with open(args.outFile, 'w') as f:
 		pickle.dump(testingSentenceAndEventData,f)
 				
 	print "Complete."

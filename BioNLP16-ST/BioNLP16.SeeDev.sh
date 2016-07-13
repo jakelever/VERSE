@@ -9,10 +9,10 @@ verseDir=$HERE/..
 
 # Parameters to use for the relation extractor
 parameters="doFeatureSelection:True ; featureChoice:dependencyPathElements,dependencyPathNearSelected,ngrams,ngramsPOS,selectedTokenTypes,splitAcrossSentences ; featureSelectPerc:5 ; kernel:linear ; sentenceRange:0 ; svmAutoClassWeights:False ; svmClassWeight:5 ; tfidf:True"
-descFile=$HERE/seedev.description2
+descFile=$HERE/seedev.description
 
 # The working directory
-outDir=tmp.SeeDev
+outDir=$PWD/tmp.SeeDev
 rm -fr $outDir
 mkdir -p $outDir
 cd $outDir
@@ -34,25 +34,37 @@ mv BioNLP-ST-2016_SeeDev-binary_dev/* BioNLP-ST-2016_SeeDev-binary_train_AND_dev
 rm -fr BioNLP-ST-2016_SeeDev-binary_train BioNLP-ST-2016_SeeDev-binary_dev
 
 # Run the text processor on the train&dev and test sets
-$jython $verseDir/core/TextProcessor.py --inDir BioNLP-ST-2016_SeeDev-binary_train_AND_dev --format ST --outFile BioNLP-ST-2016_SeeDev-binary_train_AND_dev.pickle
-$jython $verseDir/core/TextProcessor.py --inDir BioNLP-ST-2016_SeeDev-binary_test --format ST --outFile BioNLP-ST-2016_SeeDev-binary_test.pickle
+$jython $verseDir/core/TextProcessor.py --inDir BioNLP-ST-2016_SeeDev-binary_train_AND_dev --format ST --outFile BioNLP-ST-2016_SeeDev-binary_train_AND_dev.verse
+$jython $verseDir/core/TextProcessor.py --inDir BioNLP-ST-2016_SeeDev-binary_test --format ST --outFile BioNLP-ST-2016_SeeDev-binary_test.verse
 
 # Run the relation extractor!
-$python $verseDir/core/RelationExtractor.py --trainingPickle BioNLP-ST-2016_SeeDev-binary_train_AND_dev.pickle --testingPickle BioNLP-ST-2016_SeeDev-binary_test.pickle --rel_descriptions $descFile --outPickle out.pickle --parameters "$parameters"
+$python $verseDir/core/RelationExtractor.py --trainingFile BioNLP-ST-2016_SeeDev-binary_train_AND_dev.verse --testingFile BioNLP-ST-2016_SeeDev-binary_test.verse --relationDescriptions $descFile --outFile out.verse --parameters "$parameters"
+
+# Filter out any incorrect relations
+$python $verseDir/utils/Filter.py --inFile out.verse --outFile filtered.verse --relationFilters $descFile
 
 # Export to the results to the ST format
 mkdir -p ST
-$python $verseDir/utils/PickleToTriggerlessST.py --inPickle out.pickle --outDir ST
+$python $verseDir/utils/ExportToTriggerlessST.py --inFile filtered.verse --outDir ST
 
-# Filter out any incorrect relations (based on their types)
-find ST -name '*.a2' | xargs -I FILE basename FILE | sort | sed -e 's/\.a2//g' | xargs -I FILE echo "$python $verseDir/utils/DataCheck.py $HERE/seedev.description BioNLP-ST-2016_SeeDev-binary_test/FILE.a1 ST/FILE.a2 ST/FILE.a2" | sh
+# Extract the Gold (the original submitted results)
+mkdir $outDir/gold
+cd $outDir/gold
+unzip $HERE/finalSubmission.SeeDev.zip
+cd $outDir
 
-# Calculate the MD5sum of the results
-md5=`find ST -name '*.a2' | sort | xargs cat | md5sum | cut -f 1 -d ' '`
-expected=302957741abd68de2bac5a5c514bc230
+# Copy the TXT and A1 files from the original into the Gold and test directories
+cp BioNLP-ST-2016_SeeDev-binary_test/*.txt gold
+cp BioNLP-ST-2016_SeeDev-binary_test/*.a1 gold
+cp BioNLP-ST-2016_SeeDev-binary_test/*.txt ST
+cp BioNLP-ST-2016_SeeDev-binary_test/*.a1 ST
 
-# And finally check it
-if [[ "$md5" == "$expected" ]]; then
+# Compare the output of the relation extractor with the original submitted results (and get the overall F1-score)
+python $verseDir/evaluation/CompareSTs.py --goldDir gold --testDir ST > evaluate.results
+f1score=`cat evaluate.results | grep Summary | grep -oP "F1=[\d\.]*" | cut -f 2 -d '='`
+
+# And finally check that the F1-score is perfect
+if [[ "$f1score" == "1.000" ]]; then
 	echo "SUCCESS"
 else
 	echo "ERROR: Results don't match expected"

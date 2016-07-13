@@ -51,8 +51,8 @@ def randomizeParameter_sample(parameters, parametername, choices, startMin, star
 
 if __name__ == "__main__":
 
-	argparser = argparse.ArgumentParser(description='')
-	argparser.add_argument('--parameters', type=str, help='')
+	argparser = argparse.ArgumentParser(description='Generate parameter set for VERSE (either completely new, or tweaking existing set)')
+	argparser.add_argument('--parameters', type=str, help='Optional previous parameter set to tweak')
 	args = argparser.parse_args()
 
 	adjustExistingParameters = args.parameters and random.random() < 0.9
