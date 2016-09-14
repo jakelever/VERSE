@@ -1,0 +1,448 @@
+Habitat	nutrient broth
+Bacteria	escherichia coli o157:h7
+Habitat	lettuce surfaces
+Habitat	tryptic soy broth
+Habitat	lettuce
+Habitat	nb
+Bacteria	e. coli o157:h7
+Habitat	tsb
+Habitat	apple surfaces
+Habitat	apple
+Habitat	host cell
+Bacteria	legionella pneumophila
+Bacteria	anabaena sp. strain l-31
+Habitat	soil
+Habitat	peyer's patches
+Habitat	spleen
+Bacteria	y. pseudotuberculosis
+Habitat	mesenteric lymph nodes
+Bacteria	non-o1 v. cholerae
+Bacteria	non-o1 vibrio cholerae
+Habitat	patients with cirrhosis
+Habitat	patients with underlying cirrhosis and the aforementioned bacteremia
+Habitat	blood culture
+Habitat	blood
+Habitat	patients with decompensated cirrhosis
+Habitat	man models
+Bacteria	mycobacterial
+Bacteria	mycobacteria
+Habitat	animal models
+Habitat	jail environmental surfaces
+Habitat	jail
+Bacteria	mrsa
+Habitat	environmental surfaces in a jail setting
+Bacteria	staphylococcus aureus
+Bacteria	s. aureus
+Habitat	inmates' nasal
+Habitat	inmates
+Habitat	primary and secondary mannitol salts
+Habitat	oxacillin-resistant screening agar
+Habitat	correctional facilities
+Bacteria	mycoplasma pneumoniae
+Habitat	school age children with wheezing illness
+Habitat	patients with wari
+Habitat	marine
+Bacteria	zobellia galactanivorans dsij
+Bacteria	c. psittaci
+Habitat	cycloheximide-treated mccoy cells
+Bacteria	chlamydia trachomatis
+Habitat	mccoy cells
+Bacteria	c. trachomatis
+Habitat	cases of trachoma
+Bacteria	serotypes b
+Habitat	clinical
+Bacteria	serotypes d-i
+Habitat	oculogenital origin
+Bacteria	serotypes a
+Bacteria	serotypes c
+Habitat	plant
+Bacteria	agrobacterium rhizogenes
+Habitat	colonized children
+Habitat	surgical patients
+Habitat	respiratory tract
+Bacteria	kingella kingae
+Habitat	young children
+Habitat	healthy children
+Habitat	respiratory
+Habitat	children
+Bacteria	k. kingae
+Habitat	pharyngeal
+Habitat	throat
+Habitat	throat cultures
+Habitat	day-care center attendees
+Habitat	infected cells
+Bacteria	m. leprae
+Habitat	myelin-free cells
+Habitat	human
+Bacteria	mycobacterium leprae
+Habitat	schwann cells of the adult pns
+Habitat	pns
+Habitat	adult
+Habitat	adult pns
+Bacteria	e. coli
+Habitat	jejunal
+Habitat	pigs
+Habitat	pigs' jejunal tissue
+Bacteria	escherichia coli
+Bacteria	lb. gasseri k 7
+Habitat	pig jejunal tissue
+Habitat	pig
+Bacteria	escherichia coli o8:k88
+Habitat	intestinal
+Habitat	intestinal mucosa
+Habitat	jejunal mucosa
+Bacteria	vibrio cholerae o:1
+Habitat	household contacts of the patients
+Habitat	people with v. cholerae o:1 infection
+Bacteria	v. cholerae o:1
+Habitat	bivalves
+Habitat	water
+Habitat	lagoon on the outskirts of the city of cagliari
+Habitat	arselle
+Habitat	human immunodeficiency virus-infected outpatients
+Bacteria	helicobacter pylori
+Habitat	subjects with hypoacidity
+Bacteria	h. pylori
+Habitat	subjects without hypoacidity
+Habitat	hiv-positive black populations
+Habitat	hiv-positive hispanic populations
+Habitat	diseased japanese flounder cultured in a local farm
+Bacteria	pseudomonas fluorescens strain, tss
+Habitat	japanese flounder
+Bacteria	tfm
+Habitat	live vaccine
+Bacteria	helicobactor pylori
+Bacteria	h.pylori
+Geographical	roma
+Geographical	italy
+Bacteria	serratia
+Habitat	hospital s. camillo de lellis
+Habitat	petroleum reservoir production fluid
+Habitat	subterranean brine
+Bacteria	arhodomonas aquaeolei
+Habitat	subterranean environment
+Bacteria	a. aquaeolei
+Habitat	human gastrointestinal
+Bacteria	campylobacter jejuni
+Habitat	patient
+Bacteria	vre
+Habitat	patients
+Bacteria	nontypeable haemophilus influenzae (nthi)
+Habitat	throats of two healthy children
+Habitat	children attending a day care center
+Bacteria	haemophilus influenzae
+Bacteria	nthi
+Bacteria	salmonella
+Habitat	chickens
+Habitat	caecal wall of the chicks
+Habitat	caecal content of chickens
+Habitat	intracloacal
+Habitat	visceral organs
+Bacteria	s. typhimurium
+Habitat	chicks
+Habitat	food
+Habitat	light organ
+Bacteria	v. fischeri
+Habitat	hawaiian bobtail squid
+Habitat	euprymna scolopes
+Bacteria	vibrio fischeri
+Habitat	e. scolopes
+Habitat	juvenile squid's light organ
+Habitat	fish
+Bacteria	vibrio salmonicida
+Habitat	fish farm sediments
+Habitat	fish farm
+Bacteria	vibrio
+Habitat	intestinal tracts of healthy fish
+Habitat	healthy fish
+Habitat	diseased farms
+Habitat	sediment samples from diseased farms
+Habitat	disease-free fish farm
+Habitat	sediment sample from a disease-free fish farm
+Habitat	sediments
+Bacteria	v. salmonicida
+Habitat	patients with cf
+Bacteria	pseudomonas aeruginosa
+Habitat	susceptible individuals
+Geographical	spanish
+Habitat	spanish hospitals
+Habitat	humans
+Bacteria	salmonella enterica
+Geographical	northern spain
+Habitat	animals
+Bacteria	s. enterica
+Habitat	hospitals
+Bacteria	virchow
+Bacteria	livingstone
+Bacteria	mycobacterium tuberculosis
+Habitat	macaca mulatta infected with virulent mycobacterium tuberculosis
+Geographical	nepal
+Geographical	asia
+Bacteria	salmonella paratyphi a
+Habitat	israeli travelers
+Bacteria	s. paratyphi a
+Geographical	south american
+Geographical	caribbean
+Bacteria	neisseria gonorrhoeae
+Habitat	laboratories
+Geographical	americas
+Bacteria	n. gonorrhoeae
+Habitat	patient with aids
+Habitat	gingivomandibular
+Bacteria	mycobacterium kansasii
+Bacteria	campylobacter
+Habitat	uk retail poultry
+Geographical	uk
+Habitat	retail poultry
+Habitat	chicken
+Habitat	farmed chickens
+Habitat	murine macrophage-like cell line j774
+Bacteria	francisella tularensis lvs
+Bacteria	f. tularensis lvs
+Habitat	macrophage-like cell line j774
+Bacteria	francisella tularensis
+Habitat	human cells
+Habitat	j774 cell line
+Bacteria	f. tularensis
+Habitat	j774 cells
+Habitat	healthy cows
+Habitat	cattle
+Habitat	fructose medium
+Bacteria	r. eutropha h850
+Geographical	usa
+Bacteria	m. testudineum
+Habitat	gopherus polyphemus
+Geographical	georgia
+Bacteria	mycoplasma
+Habitat	free-ranging gopher tortoises
+Habitat	georgia populations of gopher tortoises
+Bacteria	mycoplasma agassizii
+Bacteria	mycoplasma testudineum
+Habitat	georgia tortoise populations
+Bacteria	m. agassizii
+Habitat	mtb-infected human blood
+Bacteria	mtb
+Habitat	patients with antibiotic administration
+Bacteria	neisseria meningitidis
+Bacteria	streptococcus pneumoniae
+Geographical	japan
+Bacteria	m. pneumoniae
+Bacteria	streptococcus agalactiae
+Bacteria	listeria monocytogenes
+Habitat	csf
+Bacteria	h. influenzae
+Bacteria	s. agalactiae
+Bacteria	s. pneumoniae
+Bacteria	l. monocytogenes
+Bacteria	staphylococcus epidermidis
+Habitat	medical devices
+Habitat	biomaterial
+Habitat	biofilms
+Bacteria	staphylococcus
+Habitat	biofilm
+Bacteria	s. epidermidis
+Habitat	egg pulp
+Habitat	egg products
+Bacteria	salmonellae
+Habitat	egg
+Habitat	strontium chloride m broth
+Habitat	strontium selenite broth
+Habitat	strontium selenite a broth
+Habitat	inpatient cases of cdi (48.6% female; median age, 62.5 years; range, 0.1-103.7 years)
+Bacteria	clostridium difficile
+Habitat	hospitalized patients
+Habitat	inpatients
+Geographical	olmsted county
+Geographical	minnesota
+Habitat	patients with severe-complicated cdi
+Habitat	sputum of patients who accepted chemotherapy
+Habitat	patients who accepted chemotherapy
+Habitat	blood of patients who accepted chemotherapy
+Habitat	urine of patients who accepted chemotherapy
+Bacteria	acinetobacter baumannii
+Bacteria	enterococcus
+Habitat	nosocomial
+Bacteria	enterobacter cloacae
+Habitat	antrum
+Bacteria	c. burnetii
+Habitat	normal yolk sacs
+Bacteria	coxiella burnetii
+Habitat	infected yolk sacs
+Habitat	snf patients
+Habitat	skilled nursing facility
+Habitat	nares swab cultures
+Habitat	nares
+Habitat	stool swab cultures
+Habitat	stool
+Habitat	oxacillin screening agar
+Bacteria	s. marcescens mg1
+Bacteria	serratia marcescens
+Habitat	ocular
+Habitat	abiotic surfaces
+Habitat	biotic surfaces
+Habitat	abiotic surface
+Habitat	biotic surface
+Bacteria	c. perfringens
+Bacteria	xanthomonas campestris pv. vesicatoria
+Bacteria	h. pullorum
+Habitat	immunocompromised patient
+Habitat	asymptomatic poultry
+Habitat	patients with enteritis
+Bacteria	helicobacter pullorum
+Habitat	mice
+Habitat	human macrophages
+Habitat	aerosol
+Habitat	aerosolized
+Habitat	world's oceans
+Habitat	marine environments
+Bacteria	marinobacter
+Habitat	bacterial flora
+Habitat	marine organisms
+Habitat	cold-smoked salmon stored at 5 degrees c
+Bacteria	carnobacterium piscicola
+Habitat	vacuum-packed cold-smoked salmon
+Habitat	spoiled cold-smoked salmon
+Bacteria	lactic acid bacteria
+Habitat	microflora
+Bacteria	lab
+Bacteria	c. piscicola
+Habitat	vacuum-packed salmon
+Bacteria	vibrio sp.
+Bacteria	rahnella aquatilis
+Bacteria	serratia liquefaciens
+Habitat	lab microflora
+Bacteria	aeromonas hydrophila
+Bacteria	enterobacteriaceae
+Bacteria	enterobacter agglomerans
+Habitat	salmon
+Habitat	hiv-infected patients presenting with isolated perianal ulcer disease
+Habitat	rectal
+Habitat	cellophane membrane disks
+Bacteria	bacteroides fragilis
+Bacteria	shigella spp
+Geographical	vietnam
+Geographical	hanoi
+Habitat	children with diarrhea
+Habitat	children less than two years of age
+Bacteria	b. fragilis
+Habitat	older children
+Habitat	monocyte-like thp-1 cells
+Habitat	host tissues
+Bacteria	lvs
+Habitat	human monocyte-like thp-1 cells
+Bacteria	f. tularensis ssp tularensis
+Habitat	infected monocytes
+Habitat	cystic fibrosis (cf) units
+Habitat	adult cystic fibrosis units
+Habitat	paediatric cystic fibrosis units
+Habitat	sputum
+Geographical	brisbane
+Geographical	australia
+Habitat	productive patients
+Bacteria	p. aeruginosa
+Geographical	u.s.
+Geographical	germany
+Bacteria	haemophilus influenzae type b
+Bacteria	campylobacter coli
+Habitat	commercially reared partridges
+Habitat	animal species
+Habitat	younger ones
+Habitat	adult partridges
+Geographical	southern italy
+Bacteria	campylobacter spp.
+Habitat	cloacal swabs
+Habitat	game birds
+Bacteria	vibrio fetus
+Habitat	lm17 medium
+Bacteria	l. lactis subsp. cremoris
+Habitat	gm17 medium
+Bacteria	l. lactis subsp. lactis
+Geographical	togo
+Geographical	west africa
+Bacteria	vibro parahaemolyticus
+Bacteria	vibrio parahaemolyticus
+Habitat	gastroenteritis patients
+Habitat	healthy carriers
+Habitat	fish samples
+Bacteria	yersinia
+Habitat	patients with helicobacter pylori-chronic active gastritis
+Bacteria	b. pseudomallei
+Bacteria	ara-
+Bacteria	ara+
+Habitat	hyperimmune mouse
+Habitat	patients with melioidosis
+Habitat	patients with chronic gastritis
+Habitat	patients with gastric cancer
+Habitat	h. pylori-positive subjects
+Habitat	young japanese people
+Habitat	h. pylori-infected monkeys
+Habitat	young japanese gastric cancer patients
+Habitat	fleas
+Geographical	são paulo
+Habitat	ticks
+Bacteria	rickettsia bellii
+Bacteria	rickettsia felis
+Habitat	dog sera
+Habitat	horse sera
+Habitat	human sera
+Bacteria	r. rickettsii
+Bacteria	rickettsial
+Geographical	brazil
+Bacteria	rickettsia
+Habitat	opossum sera
+Bacteria	r. parkeri
+Bacteria	bifidobacteria
+Bacteria	lactobacillus casei strain shirota
+Habitat	probiotic fermented milk beverage
+Habitat	healthy individuals with soft stool
+Habitat	probiotics
+Habitat	bottle
+Habitat	fermented milk beverage
+Habitat	stools
+Bacteria	lcs
+Habitat	lymph node
+Geographical	queensland
+Bacteria	m. marinum
+Bacteria	m. ulcerans
+Bacteria	m. fortuitum-chelonei complex
+Habitat	superficial abscesses
+Bacteria	rickettsiae
+Geographical	israel
+Habitat	tick
+Bacteria	spotted fever group
+Habitat	patients suffering from rickettsial disease of different degrees of severity
+Geographical	israeli
+Bacteria	klebsiella pneumonia
+Habitat	placenta of a 38-year-old secondary recurrent aborter
+Habitat	38-year-old secondary recurrent aborter
+Habitat	duodenal ulcer
+Habitat	duodenal
+Bacteria	h pylori
+Habitat	patients with active duodenal ulcer disease and h pylori infection
+Bacteria	bacillus thuringiensis serovar sotto
+Geographical	okinawa
+Habitat	culex pipiens molestus
+Bacteria	b. thuringiensis
+Habitat	genital tract
+Bacteria	chlamydia
+Habitat	infant
+Habitat	female mouse
+Bacteria	chlamydia muridarum
+Bacteria	c. muridarum
+Habitat	tlr2-deficient mice
+Habitat	dyspeptic patients
+Geographical	republic of yemen
+Habitat	patients with h. pylori infection
+Geographical	yemen
+Bacteria	lactobacillus
+Habitat	natural fermented koumiss
+Bacteria	lactic acid bacterial
+Habitat	yoghurt
+Habitat	leprosy patients
+Habitat	urine of leprosy patients
+Bacteria	listeria sp.
+Habitat	chicken nugget processing plant
+Habitat	palcam
+Habitat	lpm
+Habitat	hcla
+Habitat	chicken nugget

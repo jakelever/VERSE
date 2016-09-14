@@ -1,0 +1,1408 @@
+Genotype	plants that ectopically express abi3
+Genotype	plants that ectopically express vp1
+Genotype	val1 val2
+Gene	vp1
+Gene_Family	abi3
+Genotype	maize
+Regulatory_Network	altered aba-dependent gene expression
+Pathway	chromatin-mediated repression
+Protein_Family	pkl-related chd3 chromatin-remodeling factors
+Gene_Family	val
+Box	sph/ry
+Genotype	plants
+Gene	leafy cotyledon 1
+Development_Phase	embryo development
+Gene	lec1
+Gene	lec1-like
+Regulatory_Network	establishment of embryo dormancy
+Development_Phase	mid-to-late embryo development
+Genotype	l1l misexpression
+Gene	fus3
+Gene	fusca3
+Gene	lec2
+Gene_Family	b3 domain protein family
+Gene_Family	ccaat-binding factors
+Gene_Family	hap3 family
+Gene	l1l
+Genotype	lec1 misexpression
+Genotype	overexpression of lec2
+Genotype	overexpression of fus3
+Regulatory_Network	ectopic expression of embryonic traits in vegetative tissues
+Genotype	arabidopsis
+Gene	abscisic acid insensitive 3
+Tissue	vegetative tissues
+Development_Phase	early in embryogenesis
+Gene_Family	abscisic acid
+Gene_Family	abscisic acid insensitive 3
+Gene_Family	aba
+Regulatory_Network	embryo formation in vegetative organs
+Regulatory_Network	transformation of cotyledons to leaf-like organs
+Genotype	lec2
+Genotype	fus3
+Genotype	lec1
+Tissue	leaves
+Gene	vp1/abi3-like
+Protein_Domain	plant homeodomain-like
+Protein_Family	b3 proteins
+Protein_Domain	cw domains
+Genotype	val1 val2 double-mutant
+Regulatory_Network	embryo-like proliferations in apical meristem
+Tissue	embryo
+Gene	pkl
+Gene	pickle
+Development_Phase	vegetative development
+Development_Phase	germination
+Development_Phase	resumption of vegetative development
+Genotype	ectopic expression of lec1
+Development_Phase	morphogenesis
+Genotype	ectopic expression of l1l
+Regulatory_Network	aba-regulated gene expression
+Tissue	seed
+Protein_Family	basic leu-zipper transcription factors
+Protein_Domain	b3 domain
+Protein	abi3
+Box	aba response elements
+Gene_Family	lec1/b3 gene system
+Regulatory_Network	lec1/b3 network
+Pathway	ga biosynthesis
+Tissue	seedlings
+Development_Phase	seed development
+Protein_Family	val
+Genotype	rna interference of l1l
+Regulatory_Network	embryo arrest
+Pathway	accumulation of storage protein
+Gene_Family	b3 transcription factors
+Gene_Family	b3 domain factors
+Gene	leafy cotyledon 2
+Development_Phase	seed maturation
+Promoter	promoters of val-repressed genes
+Promoter	first introns of val-repressed genes
+Protein	fus3
+Protein_Domain	b3 dna-binding domain
+Protein	lec2
+Gene	abi3
+Gene	enhanced em level
+Gene	enhanced embryo morphogenesis level
+Gene	fusca 3
+Gene	wrinkled 1
+Gene	abscisic acid-insensitive 3
+Gene	eel
+Gene	abi5
+Gene	abscisic acid-insensitive 5
+Gene	leafy cotelydon 1 like
+Gene	wri1
+Gene	leafy cotelydon 1
+Gene	glabra 2
+Gene	agamous-like 5
+Gene	gl2
+Gene	agl5
+Gene	arabidopsis 6b-interacting protein 1-like 1
+Gene	asil1
+Genotype	ein3-1
+Genotype	over-expression of ap2 mutated at the target site of micro rnas
+Protein	atebp
+Development_Phase	floral development
+RNA	ap2 mrna
+Regulatory_Network	earlier-maturing phenotype in the gyneocium
+Genotype	transgenic plants over-expressing mutated ap2
+Genotype	transgenic plants over-expressing normal ap2
+Regulatory_Network	weak floral phenotype with a lower number of stamens
+Gene	atebp
+Genotype	atebp knockout plants
+Gene	ap2
+Gene	ant
+Protein_Family	ap2/erf family
+Protein_Domain	ap2/erebp domains
+Genotype	over-expression of atebp
+Development_Phase	maturation of the gyneocium
+Development_Phase	flower development
+Development_Phase	stamen development
+Protein	ein2
+Hormone	ethylene
+Protein	ap2
+RNA	micro rnas
+Protein	ein3
+Regulatory_Network	severe floral phenotype
+Regulatory_Network	abnormal flowers
+Genotype	ctr1
+Genotype	transgenic arabidopsis plants over-expressing atebp
+Genotype	ein
+Genotype	arabidopsis over-expressing atebp
+Regulatory_Network	differentiation of the resident cells
+Tissue	floral meristems
+Gene	wus
+Tissue	stem cell niche
+Protein	clv3
+Regulatory_Network	size of the oc
+Tissue	oc
+Regulatory_Network	maintain the overlying stem cells undifferentiated
+Tissue	organizing center
+Protein	wus
+Gene	ag
+Development_Phase	late in flower development
+Development_Phase	floral transition
+Regulatory_Network	control of seed size
+Regulatory_Network	maintenance of the stem cell niche
+Tissue	primary shoot meristem
+Gene	apetala2
+Development_Phase	floral patterning
+Tissue	root meristems
+Tissue	shoot meristems
+Regulatory_Network	maintenance of small stem cell
+Development_Phase	postembryonic organ formation
+Protein	wuschel
+Gene	clavata3
+RNA	clv3 mrna
+Gene	clv3
+Tissue	shoot meristem
+Development_Phase	late heart stage
+Gene	agamous
+Tissue	between cotyledons
+Regulatory_Network	control the size of the stem cell population
+Tissue	precursor cells of the oc in the 16-cell embryo
+Protein_Complex	clv1 receptor kinase complex
+Genotype	l28
+Regulatory_Network	premature termination of the shoot meristem
+Genotype	wus
+Regulatory_Network	keep stem cells undifferentiated
+Regulatory_Network	hypophysis specification
+Genotype	wild-type
+Development_Phase	globular
+Genotype	dcl1
+Tissue	embryos
+Development_Phase	eight-cell stage
+Genotype	a. thaliana
+Gene	a. thaliana meristem layer1
+Gene	atml1
+RNA	atml1 transcripts
+Regulatory_Network	inappropriate auxin signaling
+Tissue	hypophysis cells of wild-type globular embryos
+Promoter	dr5rev promoter
+Gene	dr5rev∷gfp
+Gene	dr5rev promoter fused to gfp
+Hormone	auxin
+Tissue	subprotoderm
+Tissue	protoderm
+RNA	pdf1 transcripts
+Gene	pdf1
+Gene	protodermal factor1
+Tissue	embryo proper
+Regulatory_Network	hypophysis is misspecified
+Genotype	plant
+RNA	wox2 transcripts
+Genotype	wild-type preglobular embryos
+Genotype	self-pollinated dcl1-5/+ plants
+Genotype	dcl1-5
+Tissue	suspensors
+Regulatory_Network	defective hypophysis cell divisions
+RNA	wox8 transcripts
+RNA	argonaute10 transcripts
+Gene	wox2
+RNA	pinhead transcripts
+RNA	zwille transcripts
+RNA	pnh transcripts
+Genotype	selfed dcl1-5/+ plants
+Tissue	apical cell lineage
+Development_Phase	preglobular stages
+Regulatory_Network	apical cell lineage defects
+Regulatory_Network	subprotoderm cell differentiation defects
+Regulatory_Network	auxin response defects
+RNA	rps5a transcripts
+Gene	dcl1
+Regulatory_Network	hypophysis-specific increase in auxin signaling
+Regulatory_Network	subprotodermal defects
+Tissue	basal cell lineage
+Regulatory_Network	incorrect expression of auxin signaling factors
+Pathway	protein bodies
+Pathway	starch grains
+Genotype	sus1
+Development_Phase	subprotodermal cell divisions
+Tissue	presumptive hypophysis cells
+Tissue	apical cell lineage of embryos
+Gene	wuschel-related homeobox2
+Regulatory_Network	defects in the differentiation of basal cell
+Regulatory_Network	defects in the differentiation of apical cell
+Regulatory_Network	embryo cell size
+Regulatory_Network	embryo cell number
+Genotype	ecotype variations in arabidopsis
+Regulatory_Network	seed size
+Regulatory_Network	cell size
+Genotype	strong ap2
+Tissue	maternal tissues
+Pathway	hexose/sucrose ratios
+Genotype	ap2
+Development_Phase	9 dap
+Development_Phase	endosperm development
+Genotype	transgenic plants
+Regulatory_Network	seed mass
+Regulatory_Network	increase in cell number
+Protein_Family	ap2/erebp
+Regulatory_Network	extended period of cell division
+Development_Phase	early morphogenesis phase of seed development
+Development_Phase	early phase of favabean seed development
+Development_Phase	undergo cell divisions
+Tissue	endosperm
+Environmental_Factor	high sucrose concentration
+Tissue	seed coat
+Gene	iku2
+Regulatory_Network	effects of maternal and paternal dosage on seed size
+Gene	iku1
+Genotype	transgene suppression of ap2 activity in arabidopsis
+Regulatory_Network	large seeds
+Regulatory_Network	defective flowers
+Regulatory_Network	reductions in oil content
+Regulatory_Network	reductions in seed mass
+Genotype	ectopic expression of aintegumenta
+Development_Phase	cell proliferation
+Gene	aintegumenta
+Regulatory_Network	plant organs increase in size
+Protein_Family	erebp
+Regulatory_Network	changes in hexose and sucrose levels
+Development_Phase	maturation phase
+Development_Phase	cell division during the morphogenesis phase
+Development_Phase	seed filling
+Genotype	small- seeded arabidopsis ecotypes
+Environmental_Factor	high concentrations of hexose
+Protein_Family	sucrose synthase
+Protein_Family	cell-wall-bound invertase
+Regulatory_Network	endosperm phenotypes that mimic paternal genomic excess
+Tissue	embryo cells
+Genotype	fava bean cultivars that exhibit variations in seed size
+Regulatory_Network	seed cell number
+Genotype	mutations in mea
+Genotype	maize miniature1
+Genotype	mutations in fis2
+Genotype	mutations in fie
+Regulatory_Network	plant fertility
+Genotype	extent of ap2 gene activity
+Tissue	seeds
+Tissue	developing seeds
+Regulatory_Network	changes in the levels of hexose and sucrose
+Regulatory_Network	hypersensitive to bleach
+Regulatory_Network	defects in carbohydrate metabolism
+Genotype	mutations in the arabidopsis wrinkled1
+Genotype	wild-type plants
+Regulatory_Network	seeds larger
+Regulatory_Network	disruption of flower structure
+Regulatory_Network	efficiency of self-pollination
+Pathway	soluble sugar metabolism
+Genotype	large-seeded arabidopsis ecotypes
+Development_Phase	cell expansion
+Pathway	proportion of sucrose to hexose
+Pathway	ratio of hexose to sucrose
+Genotype	sporophytic mutations in cereals
+Regulatory_Network	reduced fertility
+Tissue	immature fava bean embryos
+Regulatory_Network	seed weight
+Regulatory_Network	defective seed coats
+Pathway	nutrient transfer to the endosperm
+Tissue	seed coats
+Regulatory_Network	lack epidermal plateaus
+Regulatory_Network	changes in hexose levels
+Pathway	sugar metabolism
+Protein_Family	cell-wall-bound invertases
+Regulatory_Network	lack mucilage
+Regulatory_Network	outer integument cells are larger
+Pathway	mucilage
+Regulatory_Network	outer integument cells are irregular in shape
+Genotype	wild type
+Genotype	loss-of-function ap2
+Regulatory_Network	specification of floral organ identity
+Development_Phase	development of a specialized seed coat tissue
+Tissue	thin-walled parenchyma
+Genotype	favabean
+Pathway	hydrolyze sucrose
+Tissue	innermost seed coat tissue
+Regulatory_Network	larger seeds
+Development_Phase	late phase of seed development
+Regulatory_Network	fewer leaves
+Regulatory_Network	early flowering of plants
+Gene	agl15
+Tissue	nuclei of endosperm
+Genotype	mammals
+Regulatory_Network	responses to the environment
+Tissue	nuclei of suspensor cells
+Protein_Family	mads domain factors
+Genotype	yeast
+Development_Phase	muscle development
+Protein	fruitfull
+Protein	agl8
+Development_Phase	silique tissue identity
+Protein	ap1
+Protein	cauliflower
+Protein_Domain	mads domain
+Protein	apetala1
+Protein	pistillata
+Development_Phase	meristem identity
+Tissue	cytoplasm of the egg cell
+Protein_Family	agl factors
+Development_Phase	flowering
+Protein	agl15
+Development_Phase	beginning of the plant life cycle
+RNA	agl15 mrna
+Development_Phase	developing embryos
+Tissue	nuclei
+Development_Phase	plant life cycle
+Development_Phase	postembryonic phases
+Tissue	flowers
+Genotype	brassica
+Genotype	drosophila
+Protein_Domain	k domain
+Genotype	eukaryotic organisms
+Regulatory_Network	mating-type specification
+Protein_Family	mads domain–containing regulatory factors
+Protein_Family	mads domain family
+Protein	agamous-like 15
+Protein	ap3
+Protein	apetala3
+Development_Phase	floral organ identity
+Protein	ag
+Protein	agamous
+Tissue	nuclei of young embryos
+Protein	flowering locus c
+Environmental_Factor	nutrient availability
+Tissue	floral tissues
+Gene	agl2
+Genotype	humans
+Protein	agl5
+Protein	agl1
+Regulatory_Network	root architecture
+Protein	anr1
+Regulatory_Network	age-dependent developmental programs
+Tissue	young arabidopsis seedlings
+RNA	agl15 transcripts
+Tissue	reproductive tissues
+Gene	at4g38130
+Gene	hdac1
+Gene	hda6
+Gene	at5g63110
+Protein	hda6
+Protein_Family	agl15-interacting protein
+Protein	arabidopsis ortholog of sap18
+Gene	hda19
+Protein_Family	sap proteins
+Protein	sap18
+Protein	hda19
+Protein_Family	hdac
+Regulatory_Network	acquisition of embryogenic competence
+Regulatory_Network	male sporogenesis
+Protein	serk1
+Protein	serk3
+Protein_Complex	serk1 complex
+Protein_Family	mads box transcription factor
+Protein	agamous-like15
+Protein_Domain	lrr
+Protein_Family	rlk
+Protein_Family	receptor-like kinase
+Protein_Family	lrr-rlk
+Protein_Family	leucine-rich repeat receptor-like kinase
+Protein_Domain	leucine-rich repeat
+Protein	somatic embryogenesis receptor-like kinase1
+Genotype	arabidopsis thaliana
+Protein_Family	lrr-rlks
+Protein	bri1
+Protein	brassinosteroid-insensitive1
+Protein	bri1-associated kinase1
+Regulatory_Network	brassinolide signaling pathway
+Protein_Complex	bri1-containing multiple protein complexes
+Protein_Domain	c-terminal domain
+Environmental_Factor	yeast two-hybrid
+Protein	sep3
+Box	carg motif
+Protein_Domain	lenetlnrrqxxe
+Protein	scl15
+Protein	scarecrow-like protein 15
+Protein	bnscl1
+Protein	bnkcp
+Development_Phase	early globular stage
+Regulatory_Network	abnormal early globular embryos
+Genotype	selfed dcl1-10/+ plants
+Regulatory_Network	morphological defects
+Development_Phase	dermatogen stage
+Regulatory_Network	arrested embryos
+Regulatory_Network	arrest at the globular stage of development
+Genotype	dcl1-null mutant
+Regulatory_Network	abnormal cell divisions
+Development_Phase	globular stage
+Development_Phase	heart stage
+Genotype	homozygous for dcl1-5-null alleles
+RNA	dcl1 transcripts
+Regulatory_Network	loss of periclinal subprotoderm cell divisions in the embryo proper
+Regulatory_Network	abnormal hypophysis cell divisions
+Regulatory_Network	embryonic characteristics
+Genotype	recessive mutations in the arabidopsis pickle
+Tissue	somatic embryo
+Regulatory_Network	somatic embryogenesis in postgerminative roots
+Genotype	transgenic seedlings ectopically expressing lec1
+Regulatory_Network	establishment of embryogenic competence
+Regulatory_Network	induce somatic embryogenesis
+Tissue	culturing cells
+Regulatory_Network	embryogenic competence
+Protein	lec1
+Regulatory_Network	somatic embryo formation
+Genotype	pkl
+Hormone	cytokinin
+Development_Phase	embryogenesis
+Genotype	seedlings expressing the 35s∷lec2 gene
+RNA	lec1 rnas
+Regulatory_Network	induce embryogenic competence in somatic cells
+Genotype	ectopic lec2 expression
+Regulatory_Network	extend embryonic development
+Genotype	wild-type seedlings
+Development_Phase	somatic embryogenesis
+Genotype	postembryonic expression of lec1
+Regulatory_Network	genes that play roles in the initiation of somatic embryogenesis
+Protein_Family	lec transcription factors
+Tissue	roots
+Development_Phase	postgerminative
+Protein	pkl
+Development_Phase	earliest embryonic stages
+Environmental_Factor	hormone-free medium
+Genotype	pkl seedlings
+RNA	lec2 rnas
+Environmental_Factor	fret
+Protein	bak1
+Protein_Complex	br receptor complex
+Protein	bri1-associated receptor kinase1
+Tissue	cells
+Tissue	membrane
+Environmental_Factor	flim
+Genotype	mammalian
+Protein	14-3-3λ
+Protein	cdc48a
+Protein_Family	serk1-interacting proteins
+Protein	kapp
+Protein	kinase-associated protein phosphatase
+Pathway	endocytosis
+Protein	14-3-3ν
+Protein	cyan fluorescent protein
+Protein	cfp
+Regulatory_Network	serk1 signaling
+Protein_Family	14-3-3 family
+Genotype	rice
+Protein	xa21
+Protein	haesa
+Protein	clv1
+Protein	erecta
+Protein	rlk5
+Protein	fls2
+Protein_Family	kinase
+Protein_Family	phosphatase
+Protein	ptph1
+Protein_Family	14-3-3 protein
+Protein	cdc48
+Protein	p97/vcp
+Protein	jak-2
+Protein_Family	rlks
+Protein	brassinosteroid-insensitive2
+Protein_Family	gsk-3/shaggy-like kinase
+Regulatory_Network	shoot meristem maintenance
+Regulatory_Network	organ elongation
+Regulatory_Network	hormone perception
+Regulatory_Network	abscission
+Regulatory_Network	disease resistance
+Regulatory_Network	brassinosteroid signaling
+Regulatory_Network	flagellin signaling
+Protein	bes1
+Protein	bzr1
+Protein	bri1-ems-suppressor1
+Tissue	nuclear
+Protein	brassinazole-resistant1
+Protein_Family	ser/thr phosphatase bri1 suppressor1 family
+Protein	bin2
+Tissue	nucleus
+Tissue	male gametophytes
+Tissue	ovule primordia
+Environmental_Factor	in culture
+Development_Phase	formation of embryogenic cells
+Genotype	human
+Protein_Family	receptor tyr kinase
+Protein_Domain	epidermal growth factor receptor
+Tissue	female gametophytes
+Tissue	sporophytic tissues
+Tissue	vascular tissue
+Genotype	ectopic expression of serk1
+Protein	wall-associated kinase1
+Regulatory_Network	fls2 signaling
+Regulatory_Network	clv1 signaling
+Protein	clavata1
+Protein_Family	receptor-like kinases
+Protein_Family	leucine-rich repeat receptor-like kinases
+Genotype	serk1-1
+Genotype	serk2 null mutant
+Genotype	serk1-2
+Protein_Domain	ser-pro–rich juxtamembrane region
+Protein_Domain	lrrs
+Protein	gal4-bd-abi5
+Protein_Domain	gal4-bd
+Protein	abi5
+Protein	bd-abi5
+Protein_Family	abis
+Protein	gal4
+Protein_Domain	gal4-ad
+Gene	pgbd
+Gene	pgad
+Protein	abi4
+Regulatory_Network	aba-inducible gene expression
+Gene_Family	abi
+Gene_Family	aba insensitive
+Protein_Domain	gal4-binding domain
+Protein	gal4-binding domain abi4
+Protein	bd-abi4
+Protein	abi1
+Protein	gal4-bd-abi4
+Box	aw-box
+Box	[cntng]
+Box	5′-[cntng](n)7[cg]-3′
+Box	aw-box of pl-pkβ1
+Regulatory_Network	stem cell maintenance
+Protein	wri1
+Box	5′-(g/a)cnt(t/c)ggga(a/t)n-(t/c)gtgc-3′
+Protein_Domain	ap2 domain
+Box	ccgac
+Protein_Family	erebp-like
+Box	dre sequences
+Protein	wat2
+Protein_Family	ap2-type transcription factors
+Regulatory_Network	meristem function
+Development_Phase	organ development
+Promoter	upstream regions of sus2
+Promoter	upstream regions of kas1
+Promoter	upstream regions of bccp2
+Promoter	upstream regions of pl-pkβ1
+Gene	at1g16060
+Protein_Domain	ap2 domains
+Box	5′-gcac(a/g)n(a/t)tccc(a/g)ang(c/t)-3′
+Protein_Family	ap-2 type transcription factors
+Regulatory_Network	stem cell specification
+Protein	plethora1
+Box	opposite strand sequence of the ant-binding consensus sequence
+Protein	plt2
+Protein	plt1
+Development_Phase	ovule development
+Protein	ant
+Development_Phase	floral organ growth
+Tissue	root meristem
+Gene	at1g79700
+Protein	wat1
+Gene_Family	floral mads box genes
+Promoter	agl15 promoter
+Tissue	meristematic cells at the apex of the inflorescence
+Tissue	young organ primordia
+Gene	ap1
+Gene	fruitfull
+Tissue	young immature cells
+Development_Phase	reproductive phase
+Tissue	shoot apex
+Development_Phase	vegetative phase
+Gene	agl8
+Development_Phase	transition to flowering
+Gene	flowering locus c
+Gene_Family	mads box
+Tissue	floral organs
+Tissue	base of the maturing organs
+Tissue	young vegetative organs
+Tissue	shoot apical meristems
+Protein	vp1
+Protein	auxin response factor1
+Protein_Family	leafy cotyledon
+Development_Phase	maturation phases
+Protein	related to abi3/vp1
+Protein_Family	b3 domain protein
+Protein_Domain	b3 domains
+Regulatory_Network	completion of normal seed development
+Regulatory_Network	c
+Tissue	sepals
+Regulatory_Network	a
+Regulatory_Network	b
+RNA	ap2 transcript
+Protein	apetala2
+Protein_Family	ethylene-responsive element binding protein
+Gene_Family	erf
+Protein_Domain	ap2/erebp domain
+Tissue	stamens
+Gene_Family	ethylene-responsive factor
+RNA	ap2 transcripts
+Regulatory_Network	abc
+Tissue	carpels
+Tissue	petals
+Tissue	floral meristem
+Protein_Family	apetala2/ethylene-responsive element binding protein
+Regulatory_Network	a class of genes
+Tissue	four wholes of flower
+Development_Phase	whole-plant development
+Regulatory_Network	ethylene signal
+Gene	arabidopsis thaliana ethylene-responsive element binding protein
+RNA	microrna mi172
+Gene	aterf1
+RNA	bccp2 mrnas
+Tissue	maturing seeds
+Environmental_Factor	yeast one-hybrid
+Genotype	in planta
+Promoter	promoter sequences pkp-β1
+Promoter	promoter sequences bccp2
+Gene	pros2:wri1
+Pathway	oil accumulation
+Genotype	wri1 cdna under the control of the cauliflower mosaic virus 35s-promoter
+Pathway	oil content
+Gene	pro35sdual:wri1
+Pathway	biosynthetic pathways for fatty acids
+Pathway	biosynthetic pathways for lipids
+Pathway	glycolysis
+Pathway	fatty acid biosynthesis
+RNA	pkp-β1 mrnas
+Tissue	developmental series of maturing siliques
+Pathway	oilseed metabolism
+Pathway	conversion of sucrose into fatty acids
+Gene	bccp2
+Promoter	bccp2 promoter
+Genotype	transgenic seeds
+Box	ccaat
+Protein_Family	dgat
+Promoter	promoter regions of fatty acid biosynthetic genes
+Promoter	promoters of genes encoding seed storage proteins
+Protein_Family	dof
+Protein_Family	bzip
+Protein_Family	b3-domain tfs
+Pathway	triacylglycerol assembly pathway
+Protein	diacylglycerol acyltransferase 1
+Protein	dgat1
+Protein_Family	dna-binding-with-one-finger
+Box	sorlip5
+Protein	leafy cotyledon 1
+Box	sequences over-represented in light-induced promoters 5
+Protein_Family	basic-leucine zipper
+Promoter	promoters of genes encoding oleosins
+RNA	mirnas
+Genotype	dcl1-15
+Regulatory_Network	early chloroplast maturation
+Pathway	seed storage protein
+Regulatory_Network	maturation program
+Regulatory_Network	heterochronic change in the transcriptional profile
+Regulatory_Network	early accumulation of starch grains
+Genotype	seed plants
+Regulatory_Network	early accumulation of oleosin transcripts
+Regulatory_Network	early accumulation of storage proteins
+Regulatory_Network	early accumulation of lipid bodies
+Gene	at2s3
+Development_Phase	progression of maturation
+Development_Phase	initiation of maturation
+Regulatory_Network	formation of organ systems
+Pathway	storage proteins
+Development_Phase	period of maturation
+Pathway	storage lipids
+Protein	b3 domain transcription factor
+Regulatory_Network	embryogenic competence to cells
+Development_Phase	final stage of seed development
+Regulatory_Network	ability to withstand desiccation
+Regulatory_Network	embryonic characteristics to seedlings
+Regulatory_Network	formation of embryo-like structures on the surfaces of leaves
+Regulatory_Network	premature germination
+Regulatory_Network	progression through the maturation phase
+RNA	lec2 rna
+Gene_Family	leafy cotyledon
+Gene_Family	lec
+Protein_Family	hap3 subunit of ccaat-binding transcription factor
+Regulatory_Network	prematurely activate the postgermination program
+Genotype	ectopic postembryonic expression of lec2 in transgenic plants
+Protein_Family	b3 domain transcription factors
+Protein	viviparous1
+Protein	fusca3
+Protein	aba insensitive3
+Regulatory_Network	confers embryonic characteristics to seedlings
+Regulatory_Network	formation of organ-like structures
+Regulatory_Network	formation of somatic embryos
+Regulatory_Network	acquisition of desiccation tolerance
+Genotype	lec
+Genotype	transgenic plants expressing the lec2 gene ectopically
+Regulatory_Network	somatic embryos
+Regulatory_Network	normal development
+Development_Phase	cotyledon identity
+Regulatory_Network	suspensor cell fate
+Regulatory_Network	coordination of embryo development
+Regulatory_Network	initiation of embryo development
+Regulatory_Network	specification of cotyledon identity
+Regulatory_Network	maintenance of suspensor morphology
+Development_Phase	early embryo development
+Development_Phase	late embryo development
+Gene	leafy cotyledon2
+Regulatory_Network	formation of embryonic tissue
+Regulatory_Network	expression of polarity as a shoot–root axis
+Regulatory_Network	specification of morphological domains within the embryo
+Development_Phase	early morphogenesis phase
+Regulatory_Network	cytoplasmic rearrangement
+Gene	mum4
+Protein_Family	ndp-l-rhamnose synthase
+Pathway	synthesis of the pectin rhamnogalacturonan i
+Gene	mucilage-modified4
+Pathway	seed coat mucilage
+Gene	glabra2
+Gene	transparent testa glabra1
+Gene	ttg1
+Pathway	secondary cell wall biosynthesis
+Genotype	mutations in mum4
+Pathway	secretion of pectinaceous mucilage
+Pathway	biosynthesis of pectinaceous mucilage
+Tissue	seed coat epidermis
+Regulatory_Network	process of differentiation
+Pathway	biosynthesis of pectinaceous seed coat mucilage
+Pathway	synthesis of monosaccharide substrates
+Genotype	mum4
+Pathway	pectin biosynthesis
+Gene	myb61
+Gene	ttg2
+Pathway	mucilage production
+Promoter	promoters of genes involved in the synthesis of storage lipids
+Protein_Family	myb transcription factors
+Promoter	promoters of seed storage protein genes
+Protein_Family	lec
+Protein_Family	bzip transcription factors
+Gene_Family	lec genes
+Development_Phase	until the early heart stage
+Development_Phase	before the beginning of maturation
+Environmental_Factor	in vivo
+Environmental_Factor	in vitro
+Protein_Family	basic leucine zippers
+Protein_Family	bzips
+Genotype	in planta
+Protein	bzip53
+Box	g-box
+Gene	bzip53
+Protein	bzip25
+Promoter	albumin 2s2 promoter
+Protein	bzip10
+Genotype	mutations in myb61
+RNA	mum4 transcript
+Genotype	mum
+Regulatory_Network	formation of a cytoplasmic column
+Regulatory_Network	vacuolar contraction
+Regulatory_Network	lack differentiation past the growth phase of mucilage secretory cells
+Regulatory_Network	defects in floral morphogenesis
+Environmental_Factor	hydration
+Genotype	mutants in ap2
+Protein_Family	myb
+Tissue	trichomes
+Tissue	root hairs
+Protein	ttg1
+Protein_Domain	basic helix-loop-helix
+Protein_Domain	bhlh
+Tissue	epidermal cells of the arabidopsis seed coat
+Pathway	production of mucilage
+Pathway	release mucilage
+Tissue	hydrated mature seeds
+Pathway	mucilage released
+Development_Phase	seed coat differentiation
+Regulatory_Network	defects in columella production
+Protein_Family	ndp-l-rha synthase
+Regulatory_Network	defects in mucilage production
+Regulatory_Network	trichome specification
+Pathway	columella production
+Protein	gl2
+Development_Phase	time of mucilage production
+Regulatory_Network	cytoplasmic constriction
+Genotype	ein2-1
+Genotype	null mutation of ein2
+Regulatory_Network	ethylene signal pathway
+Box	gcc-box
+Protein_Family	erf
+Protein	pti4
+Regulatory_Network	ethylene responsiveness
+Protein_Domain	n-terminal of ein2
+RNA	mrnas of ap2
+Regulatory_Network	control of seed mass
+Genotype	tomato
+Box	ethylene-responsive element
+Genotype	ctr1-1
+Regulatory_Network	loss of responsiveness to ethylene
+Environmental_Factor	ethylene treatment
+Box	aaccca
+Promoter	pkp-β1 promoters
+Tissue	oil-accumulating tissues of the embryo
+Promoter	bccp2 promoters
+Protein_Family	sef3-like
+Box	sef3-recognition sequence
+Protein	sef3
+Genotype	soybean
+Genotype	tobacco
+Genotype	sunflower
+Protein_Family	histone deacetylases
+Gene	sil1
+Gene	hda5
+Promoter	promoters of the genes encoding storage products
+Genotype	sil1-1
+Genotype	asil2-1
+Gene	hda 10
+Gene	hda 9
+Gene	clf
+Development_Phase	early embryogenesis
+Protein	asil1
+Gene	asil2
+Promoter	promoters of the lec genes
+Box	gt-box
+Gene	hdt1
+Genotype	asil1-1
+RNA	abi3 mrna
+Development_Phase	2 d.a.p.
+Protein_Domain	b1
+Protein_Domain	b2
+Protein_Domain	b3
+Regulatory_Network	seed maturation
+Protein_Family	vp1/abi3-like proteins
+Protein_Domain	basic region 3
+RNA	fus3 transcript
+Protein_Domain	b3 domain of vp1
+Box	tccatgcat
+Environmental_Factor	in vitro
+Protein_Domain	b3 domain of fus3
+Protein_Family	vp1/abi3-like b3 domains
+Regulatory_Network	flattened columella
+Regulatory_Network	reduction in the amount of mucilage produced
+Protein	a-function of the abc model
+Regulatory_Network	organ identity specification
+Regulatory_Network	differentiation of the stem cells
+Tissue	stem cell niches
+Regulatory_Network	maintenance of undifferentiated stem cells
+Genotype	ap2 loss-of-function alleles
+Regulatory_Network	mispecified floral organs
+Development_Phase	early flowering
+Regulatory_Network	reduction in shoot meristem size
+Tissue	zygotic
+Development_Phase	cell differentiation
+RNA	spl transcripts
+RNA	mir156
+Regulatory_Network	early patterning defects
+Gene	spl10
+Gene	spl11
+Development_Phase	early globular
+Regulatory_Network	arrest early in development
+Pathway	microrna biogenesis
+RNA	mirna
+RNA	microrna
+Gene	dicer-like1
+Genotype	arabidopsis embryos lacking dicer-like1
+Protein	spl11
+Protein	spl10
+Regulatory_Network	overexpress ∼50 mirna targets
+Tissue	eight-cell embryos
+Regulatory_Network	premature accumulation of transcripts from genes normally induced during the embryonic maturation phase
+Gene	cbf2
+RNA	agl18 transcript
+Protein_Complex	agl15-vp16
+Gene	agl18
+Genotype	plants homozygous for null alleles of agl15
+Promoter	regulatory regions of agl18
+Genotype	ws
+RNA	cbf2 transcript
+Genotype	agl15-2
+Development_Phase	seed germination
+Genotype	ectopic expression of sap18
+Gene	lea76
+Protein_Complex	sin3/hdac1
+Gene	sap18
+Regulatory_Network	regulation of mads-box genes
+Gene	at1g52690
+Protein	agl18
+Protein	lea76
+Protein	cbf2
+Genotype	agl15
+Gene_Family	lea
+RNA	lea76 transcript
+Promoter	promoter of lea76
+Genotype	seedlings accumulating the agl15-vp16
+Genotype	ectopic expression of agl15-vp16
+Gene_Family	mads-box genes
+Genotype	seedlings constitutively expressing agl15
+Environmental_Factor	trichostatin a
+Regulatory_Network	maintain embryonic cell fate
+Tissue	vegetative cells
+Development_Phase	completion of embryo maturation
+Gene	leafy cotyledon1
+RNA	lec1 rna
+Development_Phase	early developmental stage
+Regulatory_Network	formation of embryo-like structures
+Protein_Family	ccaat box–binding factor hap3 subunit
+Tissue	endosperm tissue
+Tissue	embryo cell types
+Regulatory_Network	genes required for embryo morphogenesis
+Genotype	ectopic postembryonic expression of the lec1 gene in vegetative cells
+Regulatory_Network	embryo-specific genes
+Regulatory_Network	genes required for cellular differentiation
+Protein	ger1
+Protein	ger2
+Protein	mum4
+Pathway	synthesis of ndp-l-rha
+Genotype	bacterial
+Protein_Family	dtdp-d-glc 4,6-dehydratases
+Pathway	conversion of dtdp-d-glc to dtdp-l-rha
+Regulatory_Network	synthesis of gdp-l-fuc from gdp-d-man
+Protein_Family	3,5 epimerase, 4-reductase
+Gene	rhm2
+Gene	rhamnose biosynthesis 2
+Regulatory_Network	residual mucilage
+Pathway	production of activated sugars
+Pathway	rgi biosynthesis
+Genotype	escherichia coli
+Genotype	gram-negative bacteria
+Protein	3,5-epimerase
+Protein	4,6-dehydratase
+Pathway	convert dtdp-d-glc to dtdp-l-rha
+Protein	4-reductase
+Regulatory_Network	normal primary cell wall
+Gene	rhm3
+Gene	rhm1
+Tissue	cytosolic
+Protein	pux1
+Development_Phase	plant growth
+Regulatory_Network	bri1-mediated signaling
+Tissue	plasma membrane
+Tissue	internalized membrane compartments
+Regulatory_Network	br signaling
+Regulatory_Network	controlling signaling through the serk1 receptor
+Pathway	dephosphorylation
+Pathway	receptor internalization
+Protein_Family	transforming growth factor-ß receptors
+Hormone	brassinolide
+Tissue	intracellular vesicles
+Tissue	plasma membrane of protoplast cells
+Pathway	bri1 internalization
+Regulatory_Network	br signaling pathway
+Protein_Family	br receptor
+Protein_Family	tßri
+Protein_Family	tgf-ß
+Protein_Family	tßrii
+Protein_Family	co-like zinc finger transcription factors
+Tissue	cell surface
+Protein_Domain	kinase domain of serk1
+Tissue	siliques
+Tissue	plasma membrane of protoplasts
+Genotype	agl15-overexpressing tissues
+Genotype	agl15 ectopically overexpressed
+Environmental_Factor	in liquid culture
+Regulatory_Network	somatic embryo production
+Gene	serk
+Promoter	serk promoter
+Genotype	serk1 ectopically overexpressed
+Development_Phase	embryogenic cell formation
+Tissue	cytoplasm
+Regulatory_Network	bri1 signaling
+Pathway	protein interaction
+Pathway	membrane interaction
+Pathway	protein degradation
+Protein_Family	b-box zinc finger protein
+Protein	co-like
+Protein_Family	14-3-3 proteins
+Pathway	cytoplasmic localization of transcription factors
+Protein_Complex	serk3–bri1
+Protein	receptor-like kinase
+Pathway	nuclear localization of transcription factors
+Protein_Complex	serk1–bri1
+Protein_Domain	kinase domain
+Protein	agl24
+Tissue	meristematic
+Regulatory_Network	tgf-ß signal
+Protein_Family	pp2c phosphatase
+Protein_Family	14-3-3s
+Protein_Family	g-box transcription factors
+Pathway	endoplasmic reticulum–associated protein degradation system
+Environmental_Factor	in planta
+Protein_Family	mads box transcription factors
+Regulatory_Network	seed-specific gene expression
+Gene_Family	abscisic acid-insensitive
+Development_Phase	late embryogenesis
+Protein_Family	abi3/vp1 family
+Protein_Domain	b1 domain
+Promoter	atem6 promoter
+Protein_Domain	abi5 domains
+Pathway	storage reserves
+Development_Phase	vegetative growth of the embryo
+Development_Phase	late stages of embryogenesis
+Pathway	desiccation tolerance
+Protein_Family	2s seed proteins
+Development_Phase	seed formation
+Genotype	recessive mutations in the fusca3
+Pathway	anthocyanin
+Protein_Family	12s seed proteins
+Gene_Family	spl
+Regulatory_Network	embryonic patterning defects
+Regulatory_Network	prematurely inducing seed maturation genes before the embryo has formed
+Gene	spl
+Development_Phase	transition to a maturation phase
+RNA	mir319
+Regulatory_Network	differentiation-promoting transcription factors
+Gene	arf17
+Gene	cna
+RNA	mir160
+RNA	mir166
+Gene	phb
+Gene	phv
+Gene	tcp4
+RNA	mirna target transcripts
+Development_Phase	embryonic patterning
+Development_Phase	embryonic cell differentiation
+Regulatory_Network	delayed reduction of maternal transcripts
+Genotype	mzdicer
+Regulatory_Network	precocious expression of maturation transcripts
+Regulatory_Network	defects in patterning
+Regulatory_Network	defects in maturation gene expression
+Development_Phase	eight-cell
+Regulatory_Network	potential of preglobular cells to generate diverse cell types at the subsequent globular stages
+Regulatory_Network	maturation-phase gene expression programs
+RNA	spl11 transcript
+Regulatory_Network	loss of mir156-mediated regulation of spl transcripts
+Regulatory_Network	loss of mir166-mediated regulation of hd-zipiii transcripts
+Gene_Family	hd-zipiii
+Development_Phase	later stages of morphogenesis
+Promoter	spl10 promoter
+RNA	spl10 transcript
+Regulatory_Network	differentiation defect
+Development_Phase	morphogenesis-to-maturation-phase transition
+Regulatory_Network	premature expression of mirna targets
+Development_Phase	after the preglobular stage
+Regulatory_Network	embryonic functions
+Regulatory_Network	mir166-mediated regulation of phv
+Development_Phase	early embryonic patterning
+Regulatory_Network	patterning defects
+Regulatory_Network	precocious expression of genes normally induced during the maturation phase of embryogenesis
+Regulatory_Network	premature expression of mir156 targets
+Regulatory_Network	loss of developmental potential in preglobular cell types
+Regulatory_Network	precocious differentiation
+Promoter	spl11 promoter
+Tissue	apoplastic space
+Tissue	cytoplasmic column
+Development_Phase	cell morphogenesis
+Pathway	mucilage synthesis
+Tissue	columella
+Regulatory_Network	defect in mucilage production
+Pathway	synthesis of mucilage
+Pathway	production of an oligosaccharide signal
+Development_Phase	cell to undergo morphogenesis
+Tissue	mature seed coat
+Development_Phase	seed dispersal
+Tissue	epidermal cells of the seed coat
+Promoter	promoter of a 7s storage protein gene
+Regulatory_Network	intolerant of desiccation
+Regulatory_Network	maturation-specific genes
+Regulatory_Network	specification of embryonic organ identity
+Development_Phase	postgerminative seedling development
+Development_Phase	premature germination
+Development_Phase	metabolic quiescence
+Regulatory_Network	morphogenetic processes
+Development_Phase	seedling development
+Regulatory_Network	embryonic processes
+Genotype	higher plant
+Genotype	lower plants
+Genotype	higher plants
+Development_Phase	embryo maturation
+Development_Phase	maturation events
+Regulatory_Network	arrest of embryo morphogenesis
+Genotype	tinman
+Genotype	abnormal suspensor
+Genotype	raspberry
+Tissue	root apical meristems
+Tissue	developing shoot
+Gene	gnom
+Gene	emb30
+Gene	scarecrow
+Gene	shootmeristemless
+Gene	knolle
+Regulatory_Network	specification or cotyledon identity
+Regulatory_Network	maintenance of maturation
+Development_Phase	early seed development
+Development_Phase	late seed development
+Tissue	meristem
+Genotype	ectopic expression of the lec1 gene
+Regulatory_Network	embryonic programs
+Gene_Family	abscisic acid insensitive3
+Regulatory_Network	late maturation events
+Tissue	fully developed embryo
+Tissue	embryonic cell types, tissues
+Tissue	organ systems
+Regulatory_Network	early morphogenetic processes
+Development_Phase	meristem formation
+Development_Phase	onset of the maturation phase
+Protein_Family	dreb
+Protein_Family	rav
+Protein_Domain	b3-like domain
+Protein_Family	ap2 family
+Protein_Family	apetala2-like
+Gene_Family	lipogenic gene
+Gene	at2g41710
+Protein_Family	wri1-like
+Protein_Family	ant -like
+Protein_Family	aintegumenta -like
+Gene_Family	glycolytic biosynthetic genes
+Gene_Family	fatty acid biosynthetic genes
+Box	gccgcc
+Box	ethylene response elements
+Box	ere
+Box	gcc boxes
+Box	taagaggccgcc
+Protein_Family	ant-like
+Protein_Domain	ap2 repeat
+Protein	wrinkled1
+Protein	leafy cotyledon2
+Protein_Family	ethylene-responsive element binding proteins
+Protein_Family	apetala2/ethylene-responsive element binding proteins
+Pathway	biotin biosynthetic pathways
+Pathway	lipoic acid biosynthetic pathways
+Pathway	late glycolysis
+Pathway	fatty acid synthesis
+Pathway	fatty acid metabolism
+Genotype	a. thaliana
+Protein	aintegumenta
+Box	cacctg
+Box	caaca
+Genotype	cyanobacteria
+Genotype	ciliates
+Genotype	viruses
+Protein_Domain	ap2-like domains
+Protein	aterf1
+Protein_Family	dreb subfamily
+Box	gcc box
+Box	dres
+Box	dehydration response elements
+Protein	rav1
+Protein_Family	bhlh proteins
+Pathway	mucilage biosynthesis
+Protein_Family	bhlh protein
+Genotype	myb61
+Regulatory_Network	differentiate the outer two layers of the seed coat
+Genotype	ttg2
+Protein	enhancer of glabra3
+Protein	tt8
+Protein_Complex	ttg1-bhlh-myb
+Development_Phase	mucilage production
+Protein	egl3
+Development_Phase	differentiating siliques
+Development_Phase	seed coat secretory cell differentiation
+Genotype	gl2
+Genotype	ttg1
+Pathway	production of the large quantity of rgi
+Pathway	rha biosynthesis
+Tissue	seed coat-specific
+Protein	glabra3
+Protein	transparent testa8
+Genotype	lec2-1
+Gene	pat2s3:gfp
+Genotype	fus3-3
+Genotype	lec2-1 dcl1-15
+Genotype	fus3-3 dcl1-15
+Development_Phase	after the heart stage
+Protein_Family	b3
+Box	cttt
+Protein_Family	basic leucine zipper
+Box	catgca
+Box	aaca
+Protein_Family	dof tf
+Gene	spa
+Gene_Family	plant transcription factor genes
+Genotype	wheat
+Gene	opaque2
+Genotype	cereal
+Gene_Family	late embryogenesis abundant genes
+Gene	o2
+Gene_Family	seed storage protein genes
+Gene_Family	ssp
+Gene_Family	albumin genes
+Gene_Family	cruciferin genes
+Development_Phase	early or mid-maturation phase
+Box	acgt
+Promoter	albumin promoters
+Promoter	cruciferin promoters
+Pathway	storage compound accumulation
+Regulatory_Network	programs of gene expression related to the metabolic changes
+Box	ry
+Development_Phase	maturation
+Gene	blz2
+Box	g-box-related acgt elements
+Genotype	barley
+Development_Phase	later stages of maturation
+Regulatory_Network	gene expression programs
+Genotype	dicot
+Protein_Family	group c
+Protein_Family	o2-type
+Gene	abi1
+Gene	abi2
+Environmental_Factor	transient assays in plant cells
+Protein_Family	pp2c family of ser/thr protein phosphatases
+Protein_Family	pp2c family
+Regulatory_Network	sensitivity to aba
+Protein_Family	ser/thr protein phosphatases
+Box	abres
+Regulatory_Network	vp1 transactivation
+Regulatory_Network	aba regulation
+Box	cis-acting sequences
+Protein	embp1
+Protein	trab1
+Protein	osvp1
+Regulatory_Network	aba-inducible expression
+Protein	gf14
+Box	em1a
+Protein_Family	em1a-binding bzip
+Genotype	ectopic expression of abi3
+Genotype	ectopic expression of abi4
+Gene	abi4
+Regulatory_Network	aba hypersensitivity
+Gene_Family	enhanced response to aba
+Regulatory_Network	aba response
+Gene_Family	era
+Protein_Domain	embp1 bzip domain
+Protein_Domain	bzip domain
+Box	abre g-box
+Protein_Domain	abi5 bzip domain
+Protein_Family	dpbf subfamily
+Genotype	abi3-1 alleles with severe mutations in abi5
+Genotype	abi3-1 alleles with severe mutations in abi4
+Regulatory_Network	resistant to aba
+Box	cis-acting regulatory elements
+Box	aba-response elements
+Protein_Family	transcription factors of the b3- domain families
+Protein_Family	transcription factors of the ap2- domain families
+Regulatory_Network	aba-inducible genes
+Protein_Domain	ap2- domain
+Protein_Domain	b3- domain
+Protein_Family	transcription factors of the bzip-domain families
+Regulatory_Network	seed-specific genes
+Protein_Domain	bzip-domain
+Regulatory_Network	aba sensitivity
+Protein_Family	abi
+Genotype	dominant negative abi1-1 mutation
+Protein_Domain	dna-binding domains
+Protein_Domain	dimerization domains
+Protein_Domain	bzip domains
+Regulatory_Network	aba-activation of target gene expression
+Protein	areb2
+Protein	areb1
+Protein_Family	abi5-related transcription factors
+Protein_Domain	ser/thr-rich domains
+Development_Phase	seed dormancy
+Hormone	aba
+Environmental_Factor	protein kinase inhibitor treatment
+Box	em1b elements
+Box	em1a elements
+Promoter	abi3-responsive promoters
+Promoter	vp1 -responsive promoters
+Box	g-box elements
+Protein_Family	agl15-related proteins
+Genotype	pea
+Regulatory_Network	embryonic identity on a cell
+Regulatory_Network	embryonic identity on cells
+Tissue	secondary cotyledons
+Development_Phase	development in an embryonic mode
+Regulatory_Network	precocious germination
+Tissue	zygotic embryos
+Tissue	asexual embryos
+Genotype	oilseed rape
+Genotype	dandelion
+Regulatory_Network	shoot apex development initiates precociously
+Genotype	xtc2
+Tissue	nuclei of fully mature pollen
+Tissue	nuclei of the cells in unorganized masses
+Regulatory_Network	somatic embryogenesis
+Tissue	mature leaf tissues
+Tissue	immature embryos
+Regulatory_Network	embryonic mode
+Tissue	immature microspores
+Tissue	products of double fertilization
+Genotype	plants overexpressing agl15
+Genotype	angiosperms
+Genotype	flowering plants
+Tissue	embryonic organs
+Regulatory_Network	large primordia
+Tissue	organs with embryonic features
+Tissue	cells that took on an embryonic identity
+Development_Phase	late-heart to early-torpedo
+Tissue	organs
+Tissue	cotyledons that are initiated outside of the seed environment
+Regulatory_Network	large numbers of seeds
+Regulatory_Network	seedling survival
+Genotype	small-seeded plants
+Regulatory_Network	imprinting of maternal and paternal alleles expressed in the endosperm
+Regulatory_Network	number of seeds
+Regulatory_Network	suppression of flower meristem indeterminancy
+Development_Phase	seed coat development
+Regulatory_Network	specification of flower organ identity
+Regulatory_Network	establishment of flower meristem identity
+Protein_Family	ethylene responsive element binding protein
+Regulatory_Network	plant fitness
+Regulatory_Network	seed cell size
+Pathway	accumulation of hexose
+Genotype	fava bean
+Pathway	accumulation of sucrose
+Tissue	stems
+Regulatory_Network	increases in seed mass
+Protein_Family	sin3-associated proteins
+Protein_Family	histone deacetylase
+Protein_Complex	sin3/hdac1 complex
+Protein_Domain	agl15 binding site
+Protein	sap30
+Protein_Domain	erf3 binding site
+Protein	erf3
+Development_Phase	late stages of zygotic embryo development
+Pathway	storage compounds
+Regulatory_Network	seed maturation genes
+Development_Phase	early embryo morphogenesis
+Pathway	fa biosynthetic
+Gene_Family	late-embryogenesis abundant
+Gene	agamous-like 15
+Gene_Family	subset of leas
+Pathway	synthesis of seed storage reserves
+Development_Phase	pattern formation
+Regulatory_Network	precocious expression of differentiation-promoting transcription factors during early embryogenesis
+Regulatory_Network	earlier flowering
+Regulatory_Network	shorter vegetative phase
+Regulatory_Network	change in leaf shape
+Regulatory_Network	fewer rosette leaves
+Tissue	spatulate leaves
+Genotype	wild-type arabidopsis
+Regulatory_Network	early juvenile phase
+Genotype	plants that overexpress ap1
+Protein_Family	floral mads factors
+Genotype	plants that overexpress ag
+Genotype	plants that overexpress ap3 with pistillata
+Regulatory_Network	absence of trichomes on the abaxial surface of the leaf
+Development_Phase	juvenile phase
+Protein_Domain	carboxyl-terminal domain
+Protein_Domain	c domain
+Protein_Family	mikc subfamily
+Tissue	tissues that develop in an embryonic mode
+Protein_Family	mads-domain proteins
+Tissue	restricted sets of cells
+Box	c[a/t]8g
+Box	carg sequence
+Box	a/t-rich core
+Box	cc[a/t]6gg
+Box	c-a/t-rich-g
+Protein	seuss
+Protein	seu
+Tissue	outside of the floral context
+Protein	leunig
+Protein	lug
+Protein_Domain	c-terminal domain of agl15
+Protein	sin3-associated polypeptide of 18 kda
+Protein_Domain	lxlxl motif
+Protein_Family	non-mads domain protein
+Protein_Domain	coiled-coil motif
+Protein_Family	mads factors
+Protein_Family	mikc
+Protein_Family	subclass of mads factors
+Genotype	eukaryotic
+Protein_Domain	m domains
+Protein_Domain	mads domains
+Protein_Domain	k domains
+Protein_Domain	i domains
+Protein_Domain	c domains
+Protein_Domain	i domain
+Protein_Domain	intervening domain
+Gene	sepallata3
+Genotype	ectopic expression of sepallata3
+Box	ag cis-regulatory region containing a putative carg motif
+Regulatory_Network	ectopic ag transcription
+Protein_Family	rna-binding proteins
+Protein_Domain	mads
+Gene	sep3
+Gene	at5g13790
+Genotype	ap2-5
+RNA	aterf1 mrna
+RNA	atebp mrna
+Genotype	wt
