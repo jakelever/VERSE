@@ -237,10 +237,15 @@ if __name__ == "__main__":
 	#typeLookup = {}
 	with open(args.relationDescriptions,'r') as f:
 		for line in f:
-			name,type1,type2 = line.strip().split('\t')
+			nameAndArgs,type1,type2 = line.strip().split('\t')
+
+			# Pull out the name of arguments and sort by the argument names
+			relName,argName1,argName2 = nameAndArgs.split(';')
+			relArgs = [(argName1,type1),(argName2,type2)]
+			relArgs = sorted(relArgs)
 			
-			targetRelations.add(tuple(name.split(';')))
-			targetArguments.add((type1,type2))
+			targetRelations.add((relName,relArgs[0][0],relArgs[1][0]))
+			targetArguments.add((relArgs[0][1],relArgs[1][1]))
 
 	targetRelations = list(targetRelations)
 	targetRelations = sorted(targetRelations)
