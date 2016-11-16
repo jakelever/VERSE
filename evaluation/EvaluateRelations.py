@@ -92,7 +92,7 @@ if __name__ == "__main__":
 	argparser = argparse.ArgumentParser(description='Evaluation tool for modification extraction results')
 	argparser.add_argument('--goldFile', required=True, type=str, help='File containing gold data')
 	argparser.add_argument('--testFile', required=True, type=str, help='File containing test data')
-	parser.add_argument('--relationDescriptions', required=True, type=str, help='Description file containing list of relation types with arguments to evaluate')
+	argparser.add_argument('--relationDescriptions', type=str, help='Description file containing list of relation types with arguments to evaluate')
 	args = argparser.parse_args()
 	
 	with open(args.goldFile, 'r') as f:
