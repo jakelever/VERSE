@@ -57,7 +57,17 @@ if __name__ == "__main__":
 	acceptedRelations = set()
 	with open(args.relationFilters) as f:
 		for line in f:
-			relName,arg1Txt,arg2Txt = line.strip().split('\t')
+			relDetails,arg1Txt,arg2Txt = line.strip().split('\t')
+			relDetails = relDetails.split(";")
+			relArgNames = relDetails[1:]
+	
+			# Organise arguments in alphabetical order
+			relStuff = list(zip(relArgNames,[arg1Txt,arg2Txt]))
+			relStuff = sorted(relStuff)
+
+			sortedDetails = (relDetails[0],relStuff[0][0],relStuff[1][0])
+			arg1Txt,arg2Txt = relStuff[0][1],relStuff[1][1]
+
 			if arg1Txt == '*':
 				arg1s = allEntityTypes
 			else:
@@ -66,10 +76,9 @@ if __name__ == "__main__":
 				arg2s = allEntityTypes
 			else:
 				arg2s = set(arg2Txt.split('|'))
-			relName = tuple(relName.split(";"))
 			
 			for arg1,arg2 in itertools.product(arg1s,arg2s):
-				r = (relName,arg1,arg2)
+				r = (sortedDetails,arg1,arg2)
 				acceptedRelations.add(r)
 	
 	doFilterModifications = False
@@ -93,15 +102,15 @@ if __name__ == "__main__":
 
 		filteredRelations =  []
 		seenIDs = set()
-		for (relName,id1,id2) in relations:
+		for (relName,id1,id2,prob) in relations:
 			type1 = getType(sentenceData,id1)
 			type2 = getType(sentenceData,id2)
 			if (relName,type1,type2) in acceptedRelations:
-				filteredRelations.append((relName,id1,id2))
+				filteredRelations.append((relName,id1,id2,prob))
 				seenIDs.add(id1)
 				seenIDs.add(id2)
 			else:
-				print "Skipping relation: ", (relName,type1,type2)
+				print "Skipping relation: ", (relName,type1,type2,prob)
 
 		for s in sentenceData:
 			newLocs,newTypes = {},{}

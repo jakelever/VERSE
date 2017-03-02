@@ -46,6 +46,7 @@ if __name__ == "__main__":
 
 		#outData = {'text':text,'sourcedb':sourcedb,'sourceid':sourceid,'denotations':[],'relations':[],'modifications':[]}
 		outLines = []
+		outProbs = []
 		idConversion = {}
 		sentenceData,relations,modifications = pickleData[filename]
 
@@ -89,7 +90,7 @@ if __name__ == "__main__":
 
 
 		topR = 0
-		for relName, id1, id2 in relations:
+		for relName, id1, id2, relProb in relations:
 			if id1 in idConversion:
 				id1 = idConversion[id1]
 			if id2 in idConversion:
@@ -110,6 +111,9 @@ if __name__ == "__main__":
 
 			line = "%s\t%s %s:%s %s:%s" % (relid,relName,argNames[0],id1,argNames[1],id2)
 			outLines.append(line)
+			
+			probLine = "%s\t%f" % (relid,relProb)
+			outProbs.append(probLine)
 
 		topM = 0
 		for modtype,entityid in modifications.values():
@@ -129,5 +133,11 @@ if __name__ == "__main__":
 		with open(outFilename,'w') as f:
 			for l in outLines:
 				f.write(l + "\n")
+				
+		outProbsFilename = outDir + filename + '.probs'
+		with open(outProbsFilename,'w') as f:
+			for l in outProbs:
+				f.write(l + "\n")
+				
 		print "Written to %s" % outFilename
 

@@ -87,8 +87,8 @@ if __name__ == "__main__":
 
 	parameters['featureChoice'] = randomizeParameter_sample(parameters, 'featureChoice', possibleFeatures, 5,20)
 		
-	#parameters['classifier'] = randomizeParameter_choice(parameters, 'classifier', ['SVM','LogisticRegression'])
-	parameters['classifier'] = 'SVM'
+	parameters['classifier'] = randomizeParameter_choice(parameters, 'classifier', ['SVM','LogisticRegression'])
+	#parameters['classifier'] = 'SVM'
 
 	parameters['doFeatureSelection'] = randomizeParameter_bool(parameters,'doFeatureSelection')
 	if parameters['doFeatureSelection']:

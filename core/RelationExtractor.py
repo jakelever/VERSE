@@ -295,13 +295,14 @@ if __name__ == "__main__":
 	aVectors = coo_matrix(aVectors)
 
 	aPredictions = argClf.predict(aVectors)
+	aProbs = argClf.predict_proba(aVectors)
 
 	#predictedEventID = 1
 	predictedTriggerID = 1000
 	
 	predictedEventIDPerFile = Counter()
 	
-	for p,example in zip(aPredictions,aExamples):
+	for i,(p,example) in enumerate(zip(aPredictions,aExamples)):
 		if p != 0:
 			relType = targetRelations[p-1]
 			
@@ -332,7 +333,10 @@ if __name__ == "__main__":
 
 			relations = testingSentenceAndEventData[sentenceFilename][1]
 
-			newR = (relType,arg1ID,arg2ID)
+			#print i,p,aProbs[i,:]
+			prob = aProbs[i,p]
+
+			newR = (relType,arg1ID,arg2ID,prob)
 			#print "ADDING", newR
 			relations.append(newR)
 			#print "TEST",sentenceFilename,sentenceID1,sentenceID2,arg1Locs,arg2Locs,relType

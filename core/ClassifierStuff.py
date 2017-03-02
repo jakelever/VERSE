@@ -1083,6 +1083,9 @@ class MyLogisticRegression:
 
 	def predictSimple(self,X,Y):
 		return self.clf.predict(X)
+	def predict_proba(self,X):
+		return self.clf.predict_proba(X)
+		
 	def predict(self,X):
 		probs = self.clf.predict_proba(X)
 
@@ -1125,7 +1128,7 @@ def buildClassifierFromVectors(classes, vectors, parameters):
 		clfParameterTypes = [('kernel',str),('C',float),('degree',int),('gamma',float),('coef0',float),('shrinking',bool)]
 		clfParameters = { arg:type(parameters[arg]) for (arg,type) in clfParameterTypes if arg in parameters }
 
-		clf = svm.SVC(class_weight=class_weight_arg, **clfParameters)
+		clf = svm.SVC(class_weight=class_weight_arg, probability=True, **clfParameters)
 	elif classifier == "LogisticRegression":
 		clfParameterTypes = [('C',float),('threshold',float)]
 		clfParameters = { arg:type(parameters[arg]) for (arg,type) in clfParameterTypes if arg in parameters }
