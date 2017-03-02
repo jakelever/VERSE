@@ -240,12 +240,19 @@ if __name__ == "__main__":
 			nameAndArgs,type1,type2 = line.strip().split('\t')
 
 			# Pull out the name of arguments and sort by the argument names
-			relName,argName1,argName2 = nameAndArgs.split(';')
-			relArgs = [(argName1,type1),(argName2,type2)]
-			relArgs = sorted(relArgs)
-			
-			targetRelations.add((relName,relArgs[0][0],relArgs[1][0]))
-			targetArguments.add((relArgs[0][1],relArgs[1][1]))
+			nameAndArgsSplit = nameAndArgs.split(';')
+
+			# Basically don't do anything if we aren't given the argument names
+			if len(nameAndArgsSplit) == 1:
+				targetRelations.add(tuple(nameAndArgsSplit))
+				targetArguments.add((type1,type2))
+			else: # Or do sort by argument names (if they are provided)
+				relName,argName1,argName2 = nameAndArgs.split(';')
+				relArgs = [(argName1,type1),(argName2,type2)]
+				relArgs = sorted(relArgs)
+				
+				targetRelations.add((relName,relArgs[0][0],relArgs[1][0]))
+				targetArguments.add((relArgs[0][1],relArgs[1][1]))
 
 	targetRelations = list(targetRelations)
 	targetRelations = sorted(targetRelations)
