@@ -88,7 +88,7 @@ if __name__ == "__main__":
 				outData['denotations'].append(entity)
 
 		topR = 0
-		for relInfo, id1, id2 in relations:
+		for relInfo, id1, id2, relProb in relations:
 			if id1 in idConversion:
 				id1 = idConversion[id1]
 			if id2 in idConversion:

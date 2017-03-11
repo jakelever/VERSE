@@ -1080,6 +1080,7 @@ class MyLogisticRegression:
 
 	def fit(self,X,Y):
 		self.clf.fit(X,Y)
+		self.classes_ = self.clf.classes_
 
 	def predictSimple(self,X,Y):
 		return self.clf.predict(X)

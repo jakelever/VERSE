@@ -58,15 +58,19 @@ if __name__ == "__main__":
 	with open(args.relationFilters) as f:
 		for line in f:
 			relDetails,arg1Txt,arg2Txt = line.strip().split('\t')
-			relDetails = relDetails.split(";")
-			relArgNames = relDetails[1:]
-	
-			# Organise arguments in alphabetical order
-			relStuff = list(zip(relArgNames,[arg1Txt,arg2Txt]))
-			relStuff = sorted(relStuff)
+			relDetails = tuple(relDetails.split(";"))
 
-			sortedDetails = (relDetails[0],relStuff[0][0],relStuff[1][0])
-			arg1Txt,arg2Txt = relStuff[0][1],relStuff[1][1]
+			# If argument names are provided, we should sort them
+			if len(relDetails) > 1:
+				relArgNames = relDetails[1:]
+		
+				# Organise arguments in alphabetical order
+				relStuff = list(zip(relArgNames,[arg1Txt,arg2Txt]))
+				relStuff = sorted(relStuff)
+
+				sortedDetails = (relDetails[0],relStuff[0][0],relStuff[1][0])
+				arg1Txt,arg2Txt = relStuff[0][1],relStuff[1][1]
+				relDetails = sortedDetails
 
 			if arg1Txt == '*':
 				arg1s = allEntityTypes
@@ -78,7 +82,7 @@ if __name__ == "__main__":
 				arg2s = set(arg2Txt.split('|'))
 			
 			for arg1,arg2 in itertools.product(arg1s,arg2s):
-				r = (sortedDetails,arg1,arg2)
+				r = (relDetails,arg1,arg2)
 				acceptedRelations.add(r)
 	
 	doFilterModifications = False

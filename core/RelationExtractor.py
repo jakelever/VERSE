@@ -271,7 +271,6 @@ if __name__ == "__main__":
 	
 	relData,argVec,argFS,argClf = createRelationClassifier(trainingSentenceAndEventData,targetRelationsToIDs,targetArguments,parameters,True,sentenceRange,doFiltering)
 
-
 	with open(args.testingFile, 'r') as f:
 		testingSentenceAndEventData = pickle.load(f)
 	print "Loaded " + args.testingFile
@@ -296,6 +295,7 @@ if __name__ == "__main__":
 
 	aPredictions = argClf.predict(aVectors)
 	aProbs = argClf.predict_proba(aVectors)
+	probColumns = { c:i for i,c in enumerate(argClf.classes_) }
 
 	#predictedEventID = 1
 	predictedTriggerID = 1000
@@ -332,9 +332,8 @@ if __name__ == "__main__":
 			#relType = typeLookup[type1ID]
 
 			relations = testingSentenceAndEventData[sentenceFilename][1]
-
-			#print i,p,aProbs[i,:]
-			prob = aProbs[i,p]
+			
+			prob = aProbs[i,probColumns[p]]
 
 			newR = (relType,arg1ID,arg2ID,prob)
 			#print "ADDING", newR
