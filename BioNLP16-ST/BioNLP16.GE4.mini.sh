@@ -4,7 +4,7 @@ set -ex
 # This is a cut-down version that tests the full pipeline using only a subset of the GE4 data (used for faster integration testing)
 
 # Locations of Python, Jython and where the VERSE scripts are
-python=/gsc/software/linux-x86_64/python-2.7.5/bin/python
+python=python
 jython=jython
 HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 verseDir=$HERE/..

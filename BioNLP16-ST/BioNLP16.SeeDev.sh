@@ -2,7 +2,7 @@
 set -ex
 
 # Locations of Python, Jython and where the VERSE scripts are
-python=/gsc/software/linux-x86_64/python-2.7.5/bin/python
+python=python
 jython=jython
 HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 verseDir=$HERE/..
