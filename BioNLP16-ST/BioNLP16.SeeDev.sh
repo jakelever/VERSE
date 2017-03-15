@@ -37,8 +37,12 @@ rm -fr BioNLP-ST-2016_SeeDev-binary_train BioNLP-ST-2016_SeeDev-binary_dev
 $jython $verseDir/core/TextProcessor.py --inDir BioNLP-ST-2016_SeeDev-binary_train_AND_dev --format ST --outFile BioNLP-ST-2016_SeeDev-binary_train_AND_dev.verse
 $jython $verseDir/core/TextProcessor.py --inDir BioNLP-ST-2016_SeeDev-binary_test --format ST --outFile BioNLP-ST-2016_SeeDev-binary_test.verse
 
-# Run the relation extractor!
-$python $verseDir/core/RelationExtractor.py --trainingFile BioNLP-ST-2016_SeeDev-binary_train_AND_dev.verse --testingFile BioNLP-ST-2016_SeeDev-binary_test.verse --relationDescriptions $descFile --outFile out.verse --parameters "$parameters"
+# Build the model
+$python $verseDir/core/BuildRelationModel.py --trainingFile BioNLP-ST-2016_SeeDev-binary_train_AND_dev.verse --relationDescriptions $descFile --parameters "$parameters" --modelFile relations.model
+
+# Run the model
+$python $verseDir/core/UseRelationModel.py --modelFile relations.model --testingFile BioNLP-ST-2016_SeeDev-binary_test.verse --outFile out.verse
+
 
 # Filter out any incorrect relations
 $python $verseDir/utils/Filter.py --inFile out.verse --outFile filtered.verse --relationFilters $descFile
