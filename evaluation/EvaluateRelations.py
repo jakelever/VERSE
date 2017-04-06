@@ -30,7 +30,7 @@ def compareRelations(gRelations,tRelations,gSentenceData,tSentenceData,targetRel
 		goldR.add(r)
 		
 	testR = set()
-	for relType,id1,id2 in tRelations:
+	for relType,id1,id2,relProb in tRelations:
 		sentenceid1,locs1 = findTrigger(tSentenceData,id1)
 		sentenceid2,locs2 = findTrigger(tSentenceData,id2)
 		r = (relType,sentenceid1,tuple(locs1),sentenceid2,tuple(locs2))
