@@ -1,3 +1,5 @@
+> :exclamation: The VERSE project has been superceded by the [kindred python package](https://github.com/jakelever/kindred) which has a cleaner interface for relation extraction. We suggest that you use that instead.
+
 # VERSE v1.0
 
 This is the repo for the Vancouver Event and Relation System for Extraction (VERSE) project. It is a biomedical event and relation extractor designed for knowledge base construction purposes. It competed in the [BioNLP'16 Shared Task](http://2016.bionlp-st.org/) and placed first in the [Bacteria Biotope event subtask](http://2016.bionlp-st.org/tasks/bb2/bb3-evaluation)  and third in the [Seed Development binary event subtask](http://2016.bionlp-st.org/tasks/seedev/seedev-evaluation).
